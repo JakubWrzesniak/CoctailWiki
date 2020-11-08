@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Home from './HomeComponent';
+import Header from './HeaderComponent';
 import { connect } from 'react-redux';
 import {fetchCoctailsByName} from "../redux/ActionCreators"
 
@@ -22,7 +23,10 @@ class Main extends Component {
 
     render() {
         return(
-            <Home fetchCoctailsByName = {this.props.fetchCoctailsByName} coctails = {this.props.coctails.coctails}/>
+            <div className="App">
+                <Header />
+                <Home fetchCoctailsByName = {this.props.fetchCoctailsByName} coctails = {this.props.coctails.coctails}/>
+            </div>
         );
     }
 }
