@@ -1,8 +1,20 @@
 import React,{Component} from 'react';
 import {Control, Form}from 'react-redux-form';
 import {Col,Row,Label} from 'reactstrap';
-import List from './ListComponent';
+import MyTable from './TableComponent';
 
+const CreateTable = ({coctails}) => {
+    if(coctails.length == 0){
+        return(
+            <p></p>
+        )
+    }
+    return(
+        <MyTable list = {coctails.drinks} 
+            values = {["strDrink", "strCategory", "strGlass", "strInstructions"]}
+            headers = {["Name", "Category", "Glass","Recipt"]}/>
+    )
+}
 
 class Home extends Component{
 
@@ -25,7 +37,10 @@ class Home extends Component{
                         </Row>
                     </Form>
                     <h3>Coctail deatils</h3>
-                    <List coctails = {this.props.coctails}/>
+                    <p>
+                        <CreateTable coctails={this.props.coctails}/>
+                    </p>
+                   
                 </div>
             );
     }
