@@ -2,7 +2,6 @@ import React, { Component } from 'react' ;
 import Autosuggest from 'react-autosuggest';
 
 const getSuggestions = (list,value,name,len) =>  {
-    console.log(list);
     const inputValue = value.trim().toLowerCase();
     if(list != null){
         const filteredList = list.filter(elem => elem[name].trim().toLowerCase().includes(inputValue));

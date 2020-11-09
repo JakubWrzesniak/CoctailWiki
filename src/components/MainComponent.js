@@ -30,7 +30,7 @@ class Main extends Component {
     render() {
         return(
             <div className="App">
-                <Header fetchCoctailsByName = {this.props.fetchCoctailsByName} coctails = {this.props.coctails.coctails}/>
+                <Header fetchCoctailsByName = {this.props.fetchCoctailsByName} coctails = {this.props.coctails.coctails} categories = {this.props.categories.categories}/>
                 <Home fetchCoctailsByName = {this.props.fetchCoctailsByName} coctails = {this.props.coctails.coctails}/>
             </div>
         );
