@@ -3,9 +3,11 @@ import { Navbar, NavbarBrand,Nav ,NavLink,NavbarToggler,Collapse, NavItem, Jumbo
     Button, Modal, ModalHeader, ModalBody, Label, Form, FormGroup,Input,List } from 'reactstrap';
 import Autosuggest from 'react-autosuggest';
 
-const getSuggestions = (list) =>  {
+const getSuggestions = (list,value) =>  {
+    const inputValue = value.trim().toLowerCase();
     if(list != null){
-        return list.length > 5 ? (list.slice(0,5)):list;
+        const drinks = list.filter(elem => elem.strDrink.trim().toLowerCase().includes(inputValue));
+        return drinks.length > 5 ? (drinks.slice(0,5)):drinks;
     }
     else
         return [];
@@ -30,13 +32,14 @@ class Header extends Component {
     }
 
     onChange = (event, { newValue }) => {
-        this.props.fetchCoctailsByName(newValue);
         this.setState({
           value: newValue
         });
     };
 
     onSuggestionsFetchRequested = ({ value }) => {
+        if(this.state.suggestions.length==0)
+            this.props.fetchCoctailsByName(value);
         this.setState({
           suggestions: getSuggestions(this.props.coctails.drinks,value)
         });
