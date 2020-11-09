@@ -18,6 +18,13 @@ const CreateTable = ({coctails}) => {
 
 class Home extends Component{
 
+    constructor(props){
+        super(props);
+        this.state={
+            coctails: []
+        }
+    }
+
     handleSubmit = (values) =>{
         this.props.fetchCoctailsByName(values.search);
       
@@ -25,7 +32,7 @@ class Home extends Component{
     render(){
         return(
                 <div>
-                    <Form model = "search" onSubmit={(values) => this.handleSubmit(values)}>
+                    <Form model = "search" onChange={(values) => this.handleSubmit(values)}>
                         <Row class ="form-group">
                         <Label htmlFor="search" md={2}>Search</Label>
                             <Col>

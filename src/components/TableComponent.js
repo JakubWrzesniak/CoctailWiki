@@ -31,8 +31,7 @@ function CreateHeaders({values}){
 }
 
 const MyTable = (props) => {
-    console.log(props.list);
-    if(props.list.size != 0){
+    if(props.list != null){
         return(
             <Table cssModule = "background-color:#00FF00" className="center">
                 <tr>

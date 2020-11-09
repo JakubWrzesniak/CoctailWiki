@@ -1,1 +1,2 @@
 export const ADD_COCTAILS = "ADD_COCTAILS";
+export const ADD_CATEGORIES = "ADD_CATEGORIES";
