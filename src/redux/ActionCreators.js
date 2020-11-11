@@ -3,7 +3,7 @@ import { baseUrl } from '../shared/baseUrl';
 
 
 export const fetchCoctailsByName = (name) => (dispatch) => {
-    return fetch(baseUrl + "search.php?s=" + name)
+    return fetch(baseUrl + "api/json/v1/1/search.php?s=" + name)
         .then(response => {
                 if (response.ok) {
 
@@ -33,7 +33,7 @@ export const addCoctails = (coctails) => ({
 });
 
 export const fetchCategories = () => (dispatch) => {
-    return fetch(baseUrl + "list.php?c=list")
+    return fetch(baseUrl + "api/json/v1/1/list.php?c=list")
         .then(response => {
                 if (response.ok) {
 

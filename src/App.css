@@ -117,3 +117,7 @@ body {
 .react-autosuggest__suggestion--focused .highlight {
     color: #120000;
 }
+
+.card-img {
+    padding: 30px;
+}

@@ -34,7 +34,7 @@ class Main extends Component {
             
             return(
                 <CoctailDetails 
-                    coctail = {this.props.coctails.coctails.drinks.filter((coctail) => coctail.idDrink === parseInt(match.params.coctailId,10)) }
+                    coctail = {this.props.coctails.coctails.drinks.filter((coctail) => coctail.idDrink === match.params.coctailId)[0] }
                 />
             )
         }
