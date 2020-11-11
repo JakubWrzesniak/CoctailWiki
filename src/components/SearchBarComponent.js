@@ -1,5 +1,6 @@
 import React, { Component } from 'react' ;
 import Autosuggest from 'react-autosuggest';
+import { Link } from 'react-router-dom';
 
 const getSuggestions = (list,value,name,len) =>  {
     const inputValue = value.trim().toLowerCase();
@@ -15,7 +16,9 @@ const getSuggestionValue = suggestion => suggestion.strDrink;
 
 const renderSuggestion = suggestion => (
     <div>
-      {suggestion.strDrink}
+        <Link to = {`/coctail/${suggestion.idDrink}`} > 
+            {suggestion.strDrink}
+        </Link>
     </div>
   );
 
@@ -54,7 +57,7 @@ class SeacrhBar extends Component{
     render(){
         const { value, suggestions } = this.state;
         const inputProps = {
-            placeholder: 'Type a Coctail Name',
+            placeholder: 'Type coctail name',
             value,
             onChange: this.onChange
         };

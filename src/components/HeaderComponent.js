@@ -1,8 +1,10 @@
 import React,{Component} from 'react'; 
 import SearchBar from './SearchBarComponent';
-import { Navbar, NavbarBrand,Nav ,NavLink,NavbarToggler,Collapse, NavItem, Jumbotron, 
-    Button, Modal, ModalHeader, ModalBody, Label, Form, FormGroup,Input,List,
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Navbar, NavbarBrand,Nav ,NavLink,NavbarToggler,Collapse, NavItem, 
     UncontrolledDropdown,DropdownItem, DropdownMenu,DropdownToggle } from 'reactstrap';
+
 
 function GetDropdownItems(props){
     const list = props.list;
@@ -10,13 +12,11 @@ function GetDropdownItems(props){
 
     if(list != null && list.length > 0){
         return(list.map((elem)=>{
-            
             return(<DropdownItem>{elem[name]}</DropdownItem>);
         }));
     }
     else return <DropdownItem></DropdownItem>
 }
-
 
 class Header extends Component {
     constructor(props){
@@ -30,7 +30,7 @@ class Header extends Component {
                     <div className="container">
                         <NavbarToggler/>
                         <NavbarBrand className="mr-auto" href="/">
-                            <img src="assets/images/logo.jpg" height="60"
+                            <img src="assets/images/logo.png" height="60"
                                 alt="Coctail"/>
                         </NavbarBrand>
                         <Collapse isOpen = {true} navbar>
@@ -54,7 +54,12 @@ class Header extends Component {
                                 <NavItem>
                                     <NavLink className ="nav-link" href ="https://facebook.com">Contact</NavLink>
                                 </NavItem>
-                                <NavItem>
+                            </Nav>
+                            <Nav className="ml-auto">
+                                <NavItem className="nav-link">
+                                 <FontAwesomeIcon icon ={faSearch}  color="white"/>
+                                </NavItem>
+                                <NavItem className="nav-link">
                                     <SearchBar  fetchCoctailsByName={this.props.fetchCoctailsByName} 
                                                 list = {this.props.coctails.drinks}
                                                 len = {5}
