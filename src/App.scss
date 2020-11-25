@@ -1,0 +1,66 @@
+$mainColor: rgba(70, 15, 15);
+$backgroundColor: rgb(11, 4, 26);
+$shadowColor: rgba(255, 255, 255, 0.281);
+$fontMainSize: 20px;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@mixin margin-padding($margin_up_down: 10px,
+$margin_top_right: auto,
+$padding_up_down:10px,
+$padding_left_right: 20px) {
+    margin: $margin_up_down, $margin_top_right;
+    padding: $padding_up_down, $padding_left_right;
+}
+
+@mixin shadow($firstColor,
+$secondColor) {
+    box-shadow: 0 4px 8px 0 $firstColor, 0 6px 20px 0 $secondColor;
+}
+
+.navbar-dark {
+    background-color: $mainColor;
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+    background-color: $backgroundColor;
+}
+
+.drink-img {
+    @include shadow($shadowColor,
+    $shadowColor);
+}
+
+.drink-name {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    hr {
+        width: 30%;
+        background: white;
+        height: 1px;
+        margin-top: 2rem;
+    }
+    h1 {
+        font-family: 'Bebas Neue', cursive;
+        color: white;
+        text-align: center;
+        font-size: 4rem !important;
+    }
+}
+
+.list-img-data {
+    padding: 0px !important;
+    border: none !important;
+}
+
+.list-img {
+    width: 10%;
+    margin: 0px;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.082);
+    color: floralwhite;
+    list-style-image: url(./glass-martini-alt-solid.svg);
+}

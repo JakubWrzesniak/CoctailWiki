@@ -1,7 +1,9 @@
 import React,{Component} from 'react';
 import { connect } from 'react-redux';
 import {baseUrl} from '../shared/baseUrl';
-import {Card,CardBody,CardTitle, CardImg, CardHeader} from 'reactstrap';
+import {Card,CardBody,CardTitle, CardImg, CardHeader, CardText} from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGlassMartiniAlt } from '@fortawesome/free-solid-svg-icons';
 import {fetchCoctailById} from '../redux/ActionCreators';
 import {Loading} from './LoadingComponent';
 
@@ -35,25 +37,41 @@ function IngredientsList({array}){
         return(list);
     }
     return(
-        <ul>
-            {list().map((elem)=>{return(<li>{elem}</li>)})}
-        </ul>
+            <ul>
+                 {list().map((elem)=>{return(<li>{elem}</li>)})}
+            </ul>
     )
 }
+
 
 function RenderCoctail({coctail}){
     console.log();
     return(
       <React.Fragment>
-            <div className ="col-12 drinkName">
-                <strong>{coctail.strDrink}</strong>
-            </div>
-            <div className = "col-md-6 drinkImg">
-                <img width ="100%" src={coctail.strDrinkThumb } alt={coctail.strDrink}/> 
+            <div className ="col-12">
+                <div className="drink-name">
+                    <h1><strong>{coctail.strDrink}</strong></h1>
+                    <hr/>
+                </div>
             </div>
             <div className = "col-md-6">
-                <strong>Ingrediance</strong>
-                <IngredientsList array = {coctail}/>
+                <div>
+                    <img width ="100%" className="drink-img" src={coctail.strDrinkThumb } alt={coctail.strDrink}/> 
+                </div>
+            </div>
+            <div className = "col-md-6 drink-inform">
+                <Card>
+                    <CardBody>
+                        <CardTitle>Ingrediance</CardTitle>
+                        <CardText><IngredientsList array = {coctail}/></CardText>
+                    </CardBody>
+                    <CardBody>
+                        <CardTitle>Instruction</CardTitle>
+                        <CardText>{coctail.strInstructions}</CardText>
+                    </CardBody>
+                </Card>
+                    
+                   
             </div>
       
       </React.Fragment>
