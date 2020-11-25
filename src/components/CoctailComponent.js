@@ -1,6 +1,21 @@
 import React,{Component} from 'react';
+import { connect } from 'react-redux';
 import {baseUrl} from '../shared/baseUrl';
 import {Card,CardBody,CardTitle, CardImg, CardHeader} from 'reactstrap';
+import {fetchCoctailById} from '../redux/ActionCreators';
+import {Loading} from './LoadingComponent';
+
+const mapStateToProps = state => {
+    return {
+        coctail: state.coctail
+    }
+}
+
+const mapDispatchToProps = dispatch => ({
+    fetchCoctailById: (Id) => {dispatch(fetchCoctailById(Id))}
+})
+
+
 
 function IngredientsList({array}){
     var ingredient = (i) => {
@@ -27,6 +42,7 @@ function IngredientsList({array}){
 }
 
 function RenderCoctail({coctail}){
+    console.log();
     return(
       <React.Fragment>
             <div className ="col-12 drinkName">
@@ -47,17 +63,27 @@ function RenderCoctail({coctail}){
 }
 
 class CoctailDetails extends Component{
-    render(){   
-        console.log(this.props.coctail);
-        return(
-            <div className = "container">
-                <div className ="row">
-                    <RenderCoctail coctail={this.props.coctail}/>
-                </div>
-            </div>
+   
 
-        );
+    constructor(props){
+        super(props); 
+        props.fetchCoctailById(props.coctailId);
+    }
+
+    render(){
+        if(this.props.coctail.isLoading){
+            return <Loading/>
+        }else{
+            return(
+                <div className = "container">
+                    <div className ="row">
+                        <RenderCoctail coctail={this.props.coctail.coctail.drinks[0]}/>
+                    </div>
+                </div>
+            
+            );
+        }
     }
 }
 
-export default CoctailDetails;
+export default connect(mapStateToProps,mapDispatchToProps)(CoctailDetails);
