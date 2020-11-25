@@ -3,6 +3,9 @@ import { baseUrl } from '../shared/baseUrl';
 
 
 export const fetchCoctailsByName = (name) => (dispatch) => {
+
+    dispatch(coctailsLoading());
+
     return fetch(baseUrl + "api/json/v1/1/search.php?s=" + name)
         .then(response => {
                 if (response.ok) {
@@ -23,14 +26,82 @@ export const fetchCoctailsByName = (name) => (dispatch) => {
         .catch(error => dispatch(coctailsFaild(error.message)));
 }
 
-export const coctailsFaild = (errmess) => ({
 
+export const fetchCoctailsByCategory = (category) => (dispatch) => {
+
+    dispatch(coctailsLoading());
+
+    return fetch(baseUrl + "api/json/v1/1/filter.php?c=" + category)
+        .then(response => {
+                if (response.ok) {
+                    return response;
+                } else {
+                    var error = new Error('Error ' + response.status + ': ' + response.statusText)
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => {
+                var errmess = new Error(error.message);
+                throw errmess;
+            })
+        .then(response => response.json())
+        .then(drinks =>dispatch(addCoctails(drinks)))
+        .catch(error => dispatch(coctailsFaild(error.message)));
+}
+
+export const coctailsFaild = (errmess) => ({
+    type: ActionTypes.COCTAILS_ERROR,
+    payload: errmess,
 });
 
 export const addCoctails = (coctails) => ({
     type: ActionTypes.ADD_COCTAILS,
     payload: coctails
 });
+
+export const coctailsLoading = () =>({
+    type: ActionTypes.COCTAILS_LOADING
+})
+
+
+
+export const fetchCoctailById = (Id) => (dispatch) => {
+    dispatch(coctailLoading());
+
+    return fetch(baseUrl + "api/json/v1/1/lookup.php?i=" + Id)
+        .then(response => {
+                if (response.ok) {
+
+                    return response;
+                } else {
+                    var error = new Error('Error ' + response.status + ': ' + response.statusText)
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => {
+                var errmess = new Error(error.message);
+                throw errmess;
+            })
+        .then(response => response.json())
+        .then(coctail => dispatch(addCoctail(coctail)))
+        .catch(error => dispatch(coctailFaild(error.message)));
+}
+
+export const coctailFaild = (errmess) => ({
+
+});
+
+export const addCoctail = (coctail) => ({
+    type: ActionTypes.ADD_COCTAIL,
+    payload: coctail
+});
+
+export const coctailLoading = () =>({
+    type: ActionTypes.COCTAIL_LOADING
+})
+
 
 export const fetchCategories = () => (dispatch) => {
     return fetch(baseUrl + "api/json/v1/1/list.php?c=list")
