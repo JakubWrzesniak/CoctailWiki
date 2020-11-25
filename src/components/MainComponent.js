@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import Home from './HomeComponent';
 import Header from './HeaderComponent';
-import CoctailDetails from './CoctailComponent'
+import CoctailDetails from './CoctailComponent';
+import CoctailList from './CoctailsListComponent';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
-import {fetchCoctailsByName, fetchCategories} from "../redux/ActionCreators"
+import {fetchCoctailsByName, fetchCategories, fetchCoctailsByCategory} from "../redux/ActionCreators"
 
 const mapStateToProps = state => {
     return {
         search: state.search,
-        coctails: state.coctails,
         categories: state.categories
     }
 }
 
 const mapDispatchToProps = dispatch => ({
     fetchCoctailsByName: (name) => {dispatch(fetchCoctailsByName(name))},
-    fetchCategories: () => {dispatch(fetchCategories())}
+    fetchCategories: () => {dispatch(fetchCategories())},
 });
 
 
@@ -31,20 +31,22 @@ class Main extends Component {
 
     render() {
         const CoctailWithId = ({match}) => {
-            
             return(
                 <CoctailDetails 
-                    coctail = {this.props.coctails.coctails.drinks.filter((coctail) => coctail.idDrink === match.params.coctailId)[0] }
+                    fetchCoctailById = {this.props.fetchCoctailById} coctailId ={match.params.coctailId }
                 />
             )
         }
         return(
             <div className="App">
-                <Header fetchCoctailsByName = {this.props.fetchCoctailsByName} coctails = {this.props.coctails.coctails} categories = {this.props.categories.categories}/>
+                <Header fetchCoctailsByName = {this.props.fetchCoctailsByName} categories = {this.props.categories.categories}/>
                 <Switch>
-                    <Route path = '/coctail/:coctailId' component ={ CoctailWithId }/>
+                    <Route path = '/coctail/:coctailId' component = { CoctailWithId }/>
+                    <Route path = '/category/:category/:category2/:category3' component = { ({match}) => <CoctailList category = {match.params} />} />
+                    <Route path = '/category/:category/:category2' component = { ({match}) => <CoctailList category = {match.params} />} />
+                    <Route path = '/category/:category/' component = { ({match}) => <CoctailList category = {match.params} />} />
                 </Switch>
-                <Home fetchCoctailsByName = {this.props.fetchCoctailsByName} coctails = {this.props.coctails.coctails}/>
+                <Home fetchCoctailsByName = {this.props.fetchCoctailsByName} />
             </div>
         );
     }

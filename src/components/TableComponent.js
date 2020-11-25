@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import {Table} from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 function CreateRecords({list,values}) {
     return(list.map((listElem)=>{
@@ -14,9 +15,21 @@ function CreateRecords({list,values}) {
 
 function CreateData({elem,values}) {
     return(values.map((value)=>{
+        if(value == "strDrink") {
+            return(
+                <td><Link to ={`/coctail/${elem["idDrink"]}`} >{elem[value]}</Link></td>
+                );
+            }
+        else if(value == "strDrinkThumb"){
+        return(
+            <td className="list-img-data"><img className="list-img" src={elem[value]+"/preview"} /></td>
+            );
+        }
+        else{
         return(
             <td>{elem[value]}</td>
             );
+        }
         })
     )
 }

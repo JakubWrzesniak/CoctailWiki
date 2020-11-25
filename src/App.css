@@ -121,3 +121,13 @@ body {
 .card-img {
     padding: 30px;
 }
+
+.list-img-data {
+    padding: 0px !important;
+    border: none !important;
+}
+
+.list-img {
+    width: 10%;
+    margin: 0px;
+}
