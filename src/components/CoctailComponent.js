@@ -7,17 +7,6 @@ import { faGlassMartiniAlt } from '@fortawesome/free-solid-svg-icons';
 import {fetchCoctailById} from '../redux/ActionCreators';
 import {Loading} from './LoadingComponent';
 
-const mapStateToProps = state => {
-    return {
-        coctail: state.coctail
-    }
-}
-
-const mapDispatchToProps = dispatch => ({
-    fetchCoctailById: (Id) => {dispatch(fetchCoctailById(Id))}
-})
-
-
 
 function IngredientsList({array}){
     var ingredient = (i) => {
@@ -69,33 +58,33 @@ function RenderCoctail({coctail}){
                         <CardTitle>Instruction</CardTitle>
                         <CardText>{coctail.strInstructions}</CardText>
                     </CardBody>
-                </Card>
-                    
-                   
+                </Card> 
             </div>
-      
-      </React.Fragment>
-         
+      </React.Fragment>   
     );
-
 }
 
 class CoctailDetails extends Component{
    
 
     constructor(props){
-        super(props); 
-        props.fetchCoctailById(props.coctailId);
+        super(props);
+        this.state = {
+            coctail: this.props.coctail,
+            isLoading: this.props.isLoading,
+            errMess: this.props.errMess
+        }
     }
 
-    render(){
-        if(this.props.coctail.isLoading){
+    render(){  
+        if(this.state.isLoading){
             return <Loading/>
-        }else{
+        }
+        else{
             return(
                 <div className = "container">
                     <div className ="row">
-                        <RenderCoctail coctail={this.props.coctail.coctail.drinks[0]}/>
+                         <RenderCoctail coctail={this.state.coctail.drinks[0]}/>
                     </div>
                 </div>
             
@@ -104,4 +93,4 @@ class CoctailDetails extends Component{
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(CoctailDetails);
+export default CoctailDetails;

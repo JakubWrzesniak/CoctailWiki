@@ -47,4 +47,15 @@ body {
   list-style-image: url(./glass-martini-alt-solid.svg);
 }
 
+.coctail-list {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.coctail-list .coctail-list-item {
+  height: 90vh;
+  width: 90vw;
+  padding-top: 30%;
+  padding-bottom: 30%;
+}
+
 /*# sourceMappingURL=App.css.map */

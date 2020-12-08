@@ -1,7 +1,5 @@
 import React,{Component} from 'react';
-import {Control, Form}from 'react-redux-form';
-import {Col,Row,Label} from 'reactstrap';
-import MyTable from './TableComponent';
+
 
 
 class Home extends Component{
