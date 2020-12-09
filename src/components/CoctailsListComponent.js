@@ -1,45 +1,21 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import {coctailLoading, fetchCoctailsByCategory} from '../redux/ActionCreators';
-//import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {Loading} from './LoadingComponent';
 import { Link } from 'react-router-dom';    
 
-
-const mapStateToProps = state => {
-    return {
-        coctails: state.coctails
-    }
-}
-
-const mapDispatchToProps = dispatch => ({
-    fetchCoctailsByCategory: (category) => {dispatch(fetchCoctailsByCategory(category))}
-})
-
-const createCategory = (params) => {
-    var category = params.category;
-    if(params.category2){
-        category = category + "/" + params.category2
-    }
-    if(params.category3)
-        category = category + "/" + params.category3
-    return category;
-}
 
 class ListItem extends Component{
     render(){
         return(
            <Link to ={`/coctail/${this.props.idDrink}`} > 
-                <li>
-                    <div className="row">
-                        <div className="col-md-6">
-                            <img src ={this.props.img} alt={this.props.name}/>  
-                        </div>
-                        <div className="col-md-6">
-                                {this.props.name}  
-                        </div>           
+                <div className="row">
+                    <div className="col-md-6">
+                        <img src ={this.props.img} alt={this.props.name}/>  
                     </div>
-                </li>
+                     <div className="col-md-6">
+                           {this.props.name}  
+                    </div>           
+                </div>
             </Link>
         );
     }
@@ -49,12 +25,17 @@ class ListItem extends Component{
 function List(props){
     const coctails = props.coctails;
     const lisItems = coctails.map((coctails)=>
+        <ReactCSSTransitionGroup transitionName = "tg-list-item">
             <div className="coctail-list-item">
                 <ListItem key = {coctails.idDrink} img ={coctails.strDrinkThumb + "/preview"} name={coctails.strDrink} idDrink = {coctails.idDrink}/>
             </div>
+        </ReactCSSTransitionGroup>
         );
         return (
-                <ul>{lisItems}</ul>
+            <div>
+                {lisItems}
+            </div>
+                
         );
 }
 
@@ -62,25 +43,24 @@ class CoctailList extends Component{
 
     constructor(props){
         super(props);
-    }
-
-    componentDidMount(){
-       this.props.fetchCoctailsByCategory(createCategory(this.props.category));
+        this.state ={
+            coctails : this.props.coctails,
+            isLoading : this.props.isLoading,
+            errMess : this.props.errMess
+        }
     }
 
     render(){
-        if(this.props.coctails.isLoading)
+        if(this.state.isLoading)
             return(<div><Loading/></div>);
         else{
             return(
             <div className ="container">
-                <div className="">
-                    <div className="coctail-list">
-                         <List coctails= {this.props.coctails.coctails.drinks} />
-                    </div>
+                <div className="coctail-list">
+                    <List coctails= {this.state.coctails.drinks} />
                 </div>
             </div>);
         }
     };
 }
-export default connect(mapStateToProps,mapDispatchToProps)(CoctailList);
+export default CoctailList;

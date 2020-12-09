@@ -30,6 +30,7 @@ export const fetchCoctailsByName = (name) => (dispatch) => {
 export const fetchCoctailsByCategory = (category) => (dispatch) => {
 
     dispatch(coctailsLoading());
+    console.log(category);
 
     return fetch(baseUrl + "api/json/v1/1/filter.php?c=" + category)
         .then(response => {
