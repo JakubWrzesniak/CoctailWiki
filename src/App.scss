@@ -1,4 +1,5 @@
 $accentColor: #fff200;
+$grayColor: #636363;
 $backgroundColor: #FEFEFE;
 $shadowColor: rgba(255, 255, 255, 0.281);
 $lightFont: rgba(255,255,255,.5);
@@ -39,7 +40,9 @@ $secondColor) {
         }
     }
 }
-
+.navbar{
+    margin-bottom: 40px;
+}
 .navbar-nav{
     margin-left: auto!important;
     margin-right: auto!important;
@@ -69,6 +72,23 @@ body {
     background-color: $backgroundColor;
 }
 
+.drink-list{
+    .card:hover{
+        background-color: $grayColor;
+    }
+    a{
+        @include link($darkFont);
+    }
+    a:hover{
+        @include link($accentColor);
+    }
+    .card-title{
+        text-align: center;
+        min-height: 48px;
+        margin:auto;
+    }
+}
+
 .drink-img {
     @include shadow($shadowColor,
     $shadowColor);
@@ -93,40 +113,32 @@ body {
     }
 }
 
-.list-img-data {
-    padding: 0px !important;
-    border: none !important;
-}
+.drink-info{
+    .card {
+        background-color: rgba(255, 255, 255, 0.082);
+        color: $darkFont;
+        list-style-image: url(./glass-martini-alt-solid.svg);
+    }
 
-.list-img {
-    width: 10%;
-    margin: 0px;
-}
-
-.card {
-    background-color: rgba(255, 255, 255, 0.082);
-    color: $darkFont;
-    list-style-image: url(./glass-martini-alt-solid.svg);
-}
-
-.coctail-list {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    .coctail-list-item {
-        height: 30vh;
-        width: 80vw;
-        padding-top: 10%;
-        padding-bottom: 10%;
-        font-size: 2.2em;
-        text-align: center;
-        a:link {
-            @include link($darkFont);
-        }
-        a:visited {
-            @include link($darkFont);
-        }
-        a:hover {
-            @include link(rgb(160, 153, 153));
+    .coctail-list {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        .coctail-list-item {
+            height: 30vh;
+            width: 80vw;
+            padding-top: 10%;
+            padding-bottom: 10%;
+            font-size: 2.2em;
+            text-align: center;
+            a:link {
+                @include link($darkFont);
+            }
+            a:visited {
+                @include link($darkFont);
+            }
+            a:hover {
+                @include link(rgb(160, 153, 153));
+            }
         }
     }
 }

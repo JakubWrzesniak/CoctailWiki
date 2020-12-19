@@ -39,8 +39,7 @@ function RenderCoctail({coctail}){
       <React.Fragment>
             <div className ="col-12">
                 <div className="drink-name">
-                    <h1><strong>{coctail.strDrink}</strong></h1>
-                    <hr/>
+                    <h1><strong>{coctail.strDrink}</strong></h1><hr/>
                 </div>
             </div>
             <div className = "col-md-6">
@@ -48,7 +47,7 @@ function RenderCoctail({coctail}){
                     <img width ="100%" className="drink-img" src={coctail.strDrinkThumb } alt={coctail.strDrink}/> 
                 </div>
             </div>
-            <div className = "col-md-6 drink-inform">
+            <div className = "col-md-6 drink-info">
                 <Card>
                     <CardBody>
                         <CardTitle>Ingrediance</CardTitle>

@@ -7,6 +7,9 @@
     .navbar-dark .nav-link:hover .svg-inline--fa {
       color: #fff200 !important; }
 
+.navbar {
+  margin-bottom: 40px; }
+
 .navbar-nav {
   margin-left: auto !important;
   margin-right: auto !important; }
@@ -30,6 +33,19 @@ body {
   font-family: Helvetica, sans-serif;
   background-color: #FEFEFE; }
 
+.drink-list .card:hover {
+  background-color: #636363; }
+.drink-list a {
+  color: #000;
+  text-decoration: none; }
+.drink-list a:hover {
+  color: #fff200;
+  text-decoration: none; }
+.drink-list .card-title {
+  text-align: center;
+  min-height: 48px;
+  margin: auto; }
+
 .drink-img {
   box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.281), 0 6px 20px 0 rgba(255, 255, 255, 0.281); }
 
@@ -49,36 +65,27 @@ body {
     text-align: center;
     font-size: 4rem !important; }
 
-.list-img-data {
-  padding: 0px !important;
-  border: none !important; }
-
-.list-img {
-  width: 10%;
-  margin: 0px; }
-
-.card {
+.drink-info .card {
   background-color: rgba(255, 255, 255, 0.082);
   color: #000;
   list-style-image: url(./glass-martini-alt-solid.svg); }
-
-.coctail-list {
+.drink-info .coctail-list {
   margin-top: 20px;
   margin-bottom: 20px; }
-  .coctail-list .coctail-list-item {
+  .drink-info .coctail-list .coctail-list-item {
     height: 30vh;
     width: 80vw;
     padding-top: 10%;
     padding-bottom: 10%;
     font-size: 2.2em;
     text-align: center; }
-    .coctail-list .coctail-list-item a:link {
+    .drink-info .coctail-list .coctail-list-item a:link {
       color: #000;
       text-decoration: none; }
-    .coctail-list .coctail-list-item a:visited {
+    .drink-info .coctail-list .coctail-list-item a:visited {
       color: #000;
       text-decoration: none; }
-    .coctail-list .coctail-list-item a:hover {
+    .drink-info .coctail-list .coctail-list-item a:hover {
       color: #a09999;
       text-decoration: none; }
 
