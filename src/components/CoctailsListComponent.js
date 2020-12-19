@@ -1,43 +1,9 @@
 import React, {Component} from 'react';
 import {Loading} from './LoadingComponent';
+import List from './ListComponent';
 import {Card, CardBody, CardTitle, CardImg} from 'reactstrap'
 import { Link } from 'react-router-dom';    
 
-
-class ListItem extends Component{
-    render(){
-        return(
-            <Link to ={`/coctail/${this.props.idDrink}`} > 
-                <Card>
-                    <CardImg src ={this.props.img} alt={this.props.name}></CardImg>
-                    <CardBody>
-                        <CardTitle>
-                            
-                                {this.props.name}  
-                            
-                        </CardTitle>
-                    </CardBody>
-                </Card>
-            </Link>
-        );
-    }
-}
-
-
-function List(props){
-    const coctails = props.coctails;
-    const lisItems = coctails.map((coctails)=>
-            <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                <ListItem key = {coctails.idDrink} img ={coctails.strDrinkThumb + "/preview"} name={coctails.strDrink} idDrink = {coctails.idDrink}/>
-            </div>
-        );
-        return (
-            <div className="row">
-                {lisItems}
-            </div>
-                
-        );
-}
 
 class CoctailList extends Component{
 
