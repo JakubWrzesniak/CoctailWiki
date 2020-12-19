@@ -1,7 +1,7 @@
 import React,{Component} from 'react'; 
 import SearchBar from './SearchBarComponent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faBars, faEnvelope, faGlassWhiskey, faGlassMartiniAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { Navbar, NavbarBrand,Nav ,NavLink,NavbarToggler,Collapse, NavItem, 
     UncontrolledDropdown,DropdownItem, DropdownMenu,DropdownToggle } from 'reactstrap';
@@ -38,12 +38,12 @@ class Header extends Component {
                         <Collapse isOpen = {true} navbar>
                             <Nav navbar>
                                 <NavItem>
-                                    <NavLink className ="nav-link" to ="/">Home</NavLink>
+                                    <NavLink className ="nav-link" to ="/"><FontAwesomeIcon icon ={faGlassMartiniAlt} color="white"/> Home</NavLink>
                                 </NavItem>
                                 <NavItem>
                                 <UncontrolledDropdown nav inNavbar>
                                     <DropdownToggle nav caret>
-                                        Category
+                                        <FontAwesomeIcon icon ={faBars}  color="white"/> Category
                                     </DropdownToggle>
                                     <DropdownMenu left>
                                         <GetDropdownItems list={this.props.categories.drinks} name={'strCategory'}/>
@@ -51,15 +51,12 @@ class Header extends Component {
                                 </UncontrolledDropdown>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className ="nav-link" to ="/">Glasses</NavLink>
+                                    <NavLink className ="nav-link" to ="/"> <FontAwesomeIcon icon ={faGlassWhiskey} color="white"/> Glasses</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className ="nav-link" href ="https://facebook.com">Contact</NavLink>
-                                </NavItem>
-                            </Nav>
-                            <Nav className="ml-auto">
-                                <NavItem className="nav-link">
-                                 <FontAwesomeIcon icon ={faSearch}  color="white"/>
+                                    <NavLink className ="nav-link" href ="https://facebook.com">
+                                        <FontAwesomeIcon icon ={faEnvelope}  color="white"/> Contact
+                                    </NavLink>
                                 </NavItem>
                             </Nav>
                         </Collapse>

@@ -1,75 +1,85 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 .navbar-dark {
-  background-color: #460f0f;
-}
+  background-color: #000;
+  font-weight: bold; }
+  .navbar-dark .nav-link:hover {
+    color: #fff200 !important; }
+    .navbar-dark .nav-link:hover .svg-inline--fa {
+      color: #fff200 !important; }
+
+.navbar-nav {
+  margin-left: auto !important;
+  margin-right: auto !important; }
+  .navbar-nav .nav-item {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    margin: auto; }
+    .navbar-nav .nav-item .dropdown-menu {
+      background-color: #000; }
+    .navbar-nav .nav-item .dropdown {
+      padding-right: 0rem;
+      padding-left: 0rem; }
+      .navbar-nav .nav-item .dropdown .dropdown-item {
+        color: rgba(255, 255, 255, 0.5); }
+      .navbar-nav .nav-item .dropdown .dropdown-item:hover {
+        color: #fff200;
+        text-decoration: none;
+        background-color: #000; }
 
 body {
   font-family: Helvetica, sans-serif;
-  background-color: #0b041a;
-}
+  background-color: #FEFEFE; }
 
 .drink-img {
-  box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.281), 0 6px 20px 0 rgba(255, 255, 255, 0.281);
-}
+  box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.281), 0 6px 20px 0 rgba(255, 255, 255, 0.281); }
 
 .drink-name {
   padding-top: 20px;
   padding-bottom: 20px;
   margin-top: 50px;
-  margin-bottom: 50px;
-}
-.drink-name hr {
-  width: 30%;
-  background: white;
-  height: 1px;
-  margin-top: 2rem;
-}
-.drink-name h1 {
-  font-family: "Bebas Neue", cursive;
-  color: white;
-  text-align: center;
-  font-size: 4rem !important;
-}
+  margin-bottom: 50px; }
+  .drink-name hr {
+    width: 30%;
+    background: white;
+    height: 1px;
+    margin-top: 2rem; }
+  .drink-name h1 {
+    font-family: 'Bebas Neue', cursive;
+    color: #000;
+    text-align: center;
+    font-size: 4rem !important; }
 
 .list-img-data {
   padding: 0px !important;
-  border: none !important;
-}
+  border: none !important; }
 
 .list-img {
   width: 10%;
-  margin: 0px;
-}
+  margin: 0px; }
 
 .card {
   background-color: rgba(255, 255, 255, 0.082);
-  color: floralwhite;
-  list-style-image: url(./glass-martini-alt-solid.svg);
-}
+  color: #000;
+  list-style-image: url(./glass-martini-alt-solid.svg); }
 
 .coctail-list {
   margin-top: 20px;
-  margin-bottom: 20px;
-}
-.coctail-list .coctail-list-item {
-  height: 30vh;
-  width: 80vw;
-  padding-top: 10%;
-  padding-bottom: 10%;
-  font-size: 2.2em;
-  text-align: center;
-}
-.coctail-list .coctail-list-item a:link {
-  color: white;
-  text-decoration: none;
-}
-.coctail-list .coctail-list-item a:visited {
-  color: white;
-  text-decoration: none;
-}
-.coctail-list .coctail-list-item a:hover {
-  color: #a09999;
-  text-decoration: none;
-}
+  margin-bottom: 20px; }
+  .coctail-list .coctail-list-item {
+    height: 30vh;
+    width: 80vw;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    font-size: 2.2em;
+    text-align: center; }
+    .coctail-list .coctail-list-item a:link {
+      color: #000;
+      text-decoration: none; }
+    .coctail-list .coctail-list-item a:visited {
+      color: #000;
+      text-decoration: none; }
+    .coctail-list .coctail-list-item a:hover {
+      color: #a09999;
+      text-decoration: none; }
 
 /*# sourceMappingURL=App.css.map */

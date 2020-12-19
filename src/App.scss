@@ -1,15 +1,22 @@
-$mainColor: rgba(70, 15, 15);
-$backgroundColor: rgb(11, 4, 26);
+$accentColor: #fff200;
+$backgroundColor: #FEFEFE;
 $shadowColor: rgba(255, 255, 255, 0.281);
-$lightFont: white;
+$lightFont: rgba(255,255,255,.5);
+$darkFont: #000;
 $fontMainSize: 20px;
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-@mixin margin-padding($margin_up_down: 10px,
-$margin_top_right: auto,
-$padding_up_down:10px,
+@mixin margin-padding($margin_top_bottom: 10px,
+$margin_left_right: auto,
+$padding_top_bottom:10px,
 $padding_left_right: 20px) {
-    margin: $margin_up_down, $margin_top_right;
-    padding: $padding_up_down, $padding_left_right;
+    margin-top: $margin_top_bottom; 
+    margin-bottom: $margin_top_bottom;
+    margin-left: $margin_left_right;
+    margin-right: $margin_left_right;
+    padding-top: $padding_top_bottom; 
+    padding-bottom: $padding_top_bottom;
+    padding-left: $padding_left_right;
+    padding-right: $padding_left_right;
 }
 
 @mixin shadow($firstColor,
@@ -23,7 +30,38 @@ $secondColor) {
 }
 
 .navbar-dark {
-    background-color: $mainColor;
+    background-color: $darkFont;
+    font-weight: bold;
+    .nav-link:hover{
+        color: $accentColor!important; 
+        .svg-inline--fa{
+            color: $accentColor!important;
+        }
+    }
+}
+
+.navbar-nav{
+    margin-left: auto!important;
+    margin-right: auto!important;
+    .nav-item {
+        padding-right: 1rem;
+        padding-left: 1rem;
+        margin: auto;
+        .dropdown-menu{
+            background-color: $darkFont;
+        }
+        .dropdown{
+            padding-right: 0rem;
+            padding-left: 0rem;
+            .dropdown-item{
+                color: $lightFont;
+            }
+            .dropdown-item:hover{
+                @include link($accentColor);
+                background-color: $darkFont;
+            }
+        }
+    }
 }
 
 body {
@@ -49,7 +87,7 @@ body {
     }
     h1 {
         font-family: 'Bebas Neue', cursive;
-        color: white;
+        color: $darkFont;
         text-align: center;
         font-size: 4rem !important;
     }
@@ -67,7 +105,7 @@ body {
 
 .card {
     background-color: rgba(255, 255, 255, 0.082);
-    color: floralwhite;
+    color: $darkFont;
     list-style-image: url(./glass-martini-alt-solid.svg);
 }
 
@@ -82,10 +120,10 @@ body {
         font-size: 2.2em;
         text-align: center;
         a:link {
-            @include link($lightFont);
+            @include link($darkFont);
         }
         a:visited {
-            @include link($lightFont);
+            @include link($darkFont);
         }
         a:hover {
             @include link(rgb(160, 153, 153));

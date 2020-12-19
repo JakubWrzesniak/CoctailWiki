@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {Loading} from './LoadingComponent';
 import { Link } from 'react-router-dom';    
 
@@ -25,11 +24,11 @@ class ListItem extends Component{
 function List(props){
     const coctails = props.coctails;
     const lisItems = coctails.map((coctails)=>
-        <ReactCSSTransitionGroup transitionName = "tg-list-item">
+     
             <div className="coctail-list-item">
                 <ListItem key = {coctails.idDrink} img ={coctails.strDrinkThumb + "/preview"} name={coctails.strDrink} idDrink = {coctails.idDrink}/>
             </div>
-        </ReactCSSTransitionGroup>
+        
         );
         return (
             <div>

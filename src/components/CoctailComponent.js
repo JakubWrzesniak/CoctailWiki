@@ -13,7 +13,7 @@ function IngredientsList({array}){
         const ingredient = array["strIngredient"+i.toString()];
         const measure = array["strMeasure"+i.toString()];
         if(ingredient)
-            return(measure?measure+" "+ingredient : ingredient);
+            return(measure ? measure + " " + ingredient : ingredient);
         } 
     var list = ()=>{
         var i =1;
