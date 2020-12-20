@@ -6,7 +6,7 @@ import CoctailList from './CoctailsListComponent';
 import List from './ListComponent';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
-import {fetchCoctailsByName, fetchCategories, fetchCoctailsByCategory, fetchCoctailById, fetchGlasses, fetchCoctailsByGlass} from "../redux/ActionCreators"
+import {fetchCoctailsByName, fetchCategories, fetchCoctailsBy, fetchCoctailById, fetchGlasses} from "../redux/ActionCreators"
 
 const mapStateToProps = state => {
     return {
@@ -22,9 +22,8 @@ const mapDispatchToProps = dispatch => ({
     fetchCoctailsByName: (name) => {dispatch(fetchCoctailsByName(name))},
     fetchCategories: () => {dispatch(fetchCategories())},
     fetchCoctailById: (Id) => {dispatch(fetchCoctailById(Id))},
-    fetchCoctailsByCategory: (category) => {dispatch(fetchCoctailsByCategory(category))},
-    fetchGlasses: () => {dispatch(fetchGlasses())},
-    fetchCoctailsByGlass: (glass) => {dispatch(fetchCoctailsByGlass(glass))}
+    fetchCoctailsBy: (value, id) => {dispatch(fetchCoctailsBy(value, id))},
+    fetchGlasses: () => {dispatch(fetchGlasses())}
 });
 
 
@@ -51,14 +50,14 @@ class Main extends Component {
     handleCoctailsCategory(categoryName){
         if(categoryName != this.state.coctailCategory){
             this.setState({coctailCategory: categoryName});
-            this.props.fetchCoctailsByCategory(categoryName);
+            this.props.fetchCoctailsBy(categoryName, "c");
         }
     }
 
     handleCoctailsGlass(glassName){
         if(glassName != this.state.coctailGlass){
             this.setState({coctailGlass: glassName});
-            this.props.fetchCoctailsByGlass(glassName);
+            this.props.fetchCoctailsBy(glassName, "g");
         }
     }
 

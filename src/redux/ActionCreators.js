@@ -27,34 +27,11 @@ export const fetchCoctailsByName = (name) => (dispatch) => {
 }
 
 
-export const fetchCoctailsByCategory = (category) => (dispatch) => {
+export const fetchCoctailsBy= (value, id) => (dispatch) => {
 
     dispatch(coctailsLoading());
 
-    return fetch(baseUrl + "api/json/v1/1/filter.php?c=" + category)
-        .then(response => {
-                if (response.ok) {
-                    return response;
-                } else {
-                    var error = new Error('Error ' + response.status + ': ' + response.statusText)
-                    error.response = response;
-                    throw error;
-                }
-            },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(drinks =>dispatch(addCoctails(drinks)))
-        .catch(error => dispatch(coctailsFaild(error.message)));
-}
-
-export const fetchCoctailsByGlass = (glass) => (dispatch) => {
-
-    dispatch(coctailsLoading());
-
-    return fetch(baseUrl + "api/json/v1/1/filter.php?g=" + glass)
+    return fetch(baseUrl + "api/json/v1/1/filter.php?"+ id + "=" + value)
         .then(response => {
                 if (response.ok) {
                     return response;
