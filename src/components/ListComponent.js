@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function ListItem(props){
     return(
-        <Link to ={`/coctail/${props.idDrink}`} > 
+        <Link to ={`/coctail/${props.id}`} > 
             <Card>
                 <CardImg src ={props.img} alt={props.name}></CardImg>
                 <CardBody>
@@ -17,9 +17,9 @@ function ListItem(props){
 }
 
 function List(props){
-    const lisItems = props.coctails.map((coctail)=>
+    const lisItems = props.elems.map((elem)=>
         <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-            <ListItem img ={coctail.strDrinkThumb + "/preview"} name={coctail.strDrink} idDrink = {coctail.idDrink}/>
+            <ListItem img ={elem[props.strThumb] + "/preview"} name={elem[props.name]} id = {elem[props.id]}/>
         </div>
     );
     return(

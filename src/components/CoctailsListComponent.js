@@ -23,7 +23,7 @@ class CoctailList extends Component{
             return(
             <div className="drink-list">
                 <div className ="container"> 
-                    <List coctails= {this.state.coctails.drinks} />
+                    <List elems = {this.state.coctails.drinks} strThumb = "strDrinkThumb" name = "strDrink" id = "idDrink"/>
                 </div>
             </div>
             );}
