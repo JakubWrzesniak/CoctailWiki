@@ -6,7 +6,7 @@ import CoctailList from './CoctailsListComponent';
 import List from './ListComponent';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
-import {fetchCoctailsByName, fetchCategories, fetchCoctailsByCategory, fetchCoctailById, fetchGlasses} from "../redux/ActionCreators"
+import {fetchCoctailsByName, fetchCategories, fetchCoctailsByCategory, fetchCoctailById, fetchGlasses, fetchCoctailsByGlass} from "../redux/ActionCreators"
 
 const mapStateToProps = state => {
     return {
@@ -23,7 +23,8 @@ const mapDispatchToProps = dispatch => ({
     fetchCategories: () => {dispatch(fetchCategories())},
     fetchCoctailById: (Id) => {dispatch(fetchCoctailById(Id))},
     fetchCoctailsByCategory: (category) => {dispatch(fetchCoctailsByCategory(category))},
-    fetchGlasses: () => {dispatch(fetchGlasses())}
+    fetchGlasses: () => {dispatch(fetchGlasses())},
+    fetchCoctailsByGlass: (glass) => {dispatch(fetchCoctailsByGlass(glass))}
 });
 
 
@@ -32,11 +33,13 @@ class Main extends Component {
         super(props);
         this.state ={
             coctailId: -1,
-            coctailCategory: ""
+            coctailCategory: "",
+            coctailGlass: ""
         }
 
         this.handleCoctail = this.handleCoctail.bind(this); 
-        this.handleCoctails = this.handleCoctails.bind(this); 
+        this.handleCoctailsCategory = this.handleCoctailsCategory.bind(this); 
+        this.handleCoctailsGlass = this.handleCoctailsGlass.bind(this); 
     }
 
     handleCoctail(id){
@@ -45,10 +48,17 @@ class Main extends Component {
             this.props.fetchCoctailById(id);
         }
     }
-    handleCoctails(catgoryName){
-        if(catgoryName != this.state.coctailCategory){
-            this.setState({coctailCategory: catgoryName});
-            this.props.fetchCoctailsByCategory(catgoryName)
+    handleCoctailsCategory(categoryName){
+        if(categoryName != this.state.coctailCategory){
+            this.setState({coctailCategory: categoryName});
+            this.props.fetchCoctailsByCategory(categoryName);
+        }
+    }
+
+    handleCoctailsGlass(glassName){
+        if(glassName != this.state.coctailGlass){
+            this.setState({coctailGlass: glassName});
+            this.props.fetchCoctailsByGlass(glassName);
         }
     }
 
@@ -68,19 +78,27 @@ class Main extends Component {
             var category = match.params.category;
             if(match.params.category2) category += "/" + match.params.category2
             if(match.params.category3) category += "/" + match.params.category3
-            console.log(category);
-            this.handleCoctails(category);
+            this.handleCoctailsCategory(category);
+            return(<CoctailList coctails = {this.props.coctails.coctails} isLoading = {this.props.coctails.isLoading} errMess = {this.props.coctails.errMess}/>)
+        }
+
+        const CoctailsWithGlass= ({match}) =>{
+            var glass = match.params.glass;
+            if(match.params.glass2) glass += "/" + match.params.glass2
+            console.log(glass);
+            this.handleCoctailsGlass(glass);
             return(<CoctailList coctails = {this.props.coctails.coctails} isLoading = {this.props.coctails.isLoading} errMess = {this.props.coctails.errMess}/>)
         }
         return(
             <div className="App">
-                <Header categories = {this.props.categories.categories}/>
+                <Header categories = {this.props.categories.categories} glasses={this.props.glasses.glasses}/>
                 <Switch>
                     <Route path = '/coctail/:coctailId' component = { CoctailWithId } />
                     <Route path = '/category/:category/:category2/:category3' component = { CoctailsWithCategory } />
                     <Route path = '/category/:category/:category2' component = { CoctailsWithCategory } />
                     <Route path = '/category/:category/' component = { CoctailsWithCategory } />
-                    <Route path = '/glasses' component = {<List></List>} />
+                    <Route path = '/glass/:glass/:glass2' component = { CoctailsWithGlass } />
+                    <Route path = '/glass/:glass' component = { CoctailsWithGlass } />
                 </Switch>
                 <Home fetchCoctailsByName = {this.props.fetchCoctailsByName} />
             </div>

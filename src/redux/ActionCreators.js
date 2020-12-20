@@ -30,7 +30,6 @@ export const fetchCoctailsByName = (name) => (dispatch) => {
 export const fetchCoctailsByCategory = (category) => (dispatch) => {
 
     dispatch(coctailsLoading());
-    console.log(category);
 
     return fetch(baseUrl + "api/json/v1/1/filter.php?c=" + category)
         .then(response => {
@@ -51,6 +50,30 @@ export const fetchCoctailsByCategory = (category) => (dispatch) => {
         .catch(error => dispatch(coctailsFaild(error.message)));
 }
 
+export const fetchCoctailsByGlass = (glass) => (dispatch) => {
+
+    dispatch(coctailsLoading());
+
+    return fetch(baseUrl + "api/json/v1/1/filter.php?g=" + glass)
+        .then(response => {
+                if (response.ok) {
+                    return response;
+                } else {
+                    var error = new Error('Error ' + response.status + ': ' + response.statusText)
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => {
+                var errmess = new Error(error.message);
+                throw errmess;
+            })
+        .then(response => response.json())
+        .then(drinks =>dispatch(addCoctails(drinks)))
+        .catch(error => dispatch(coctailsFaild(error.message)));
+}
+
+
 export const coctailsFaild = (errmess) => ({
     type: ActionTypes.COCTAILS_ERROR,
     payload: errmess,
@@ -69,7 +92,6 @@ export const coctailsLoading = () =>({
 
 export const fetchCoctailById = (id) => (dispatch) => {
     dispatch(coctailLoading());
-    console.log(id);
     return fetch(baseUrl + "api/json/v1/1/lookup.php?i=" + id)
         .then(response => {
                 if (response.ok) {
