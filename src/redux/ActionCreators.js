@@ -67,13 +67,12 @@ export const coctailsLoading = () =>({
 
 
 
-export const fetchCoctailById = (Id) => (dispatch) => {
+export const fetchCoctailById = (id) => (dispatch) => {
     dispatch(coctailLoading());
-
-    return fetch(baseUrl + "api/json/v1/1/lookup.php?i=" + Id)
+    console.log(id);
+    return fetch(baseUrl + "api/json/v1/1/lookup.php?i=" + id)
         .then(response => {
                 if (response.ok) {
-
                     return response;
                 } else {
                     var error = new Error('Error ' + response.status + ': ' + response.statusText)
@@ -133,3 +132,37 @@ export const addCategories = (categories) => ({
 export const categoriesFaild = (errmess) => ({
 
 });
+
+export const fetchGlasses = () => (dispatch) => {
+    dispatch(glassesLoading());
+    return fetch(baseUrl + "api/json/v1/1/list.php?g=list")
+        .then(response => {
+                if (response.ok) {
+                    return response;
+                } else {
+                    var error = new Error('Error ' + response.status + ': ' + response.statusText)
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => {
+                var errmess = new Error(error.message);
+                throw errmess;
+            })
+        .then(response => response.json())
+        .then(glasses => dispatch(addGlasses(glasses)))
+        .catch(error => dispatch(coctailsFaild(error.message)));
+}
+
+export const addGlasses= (glasses) => ({
+    type: ActionTypes.ADD_GLASSES,
+    payload: glasses
+});
+
+export const glassesFaild = (errmess) => ({
+
+});
+
+export const glassesLoading = () =>({
+    type: ActionTypes.GLASSES_LOADING
+})

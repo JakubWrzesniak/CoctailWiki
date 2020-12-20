@@ -51,7 +51,9 @@ class Header extends Component {
                                 </UncontrolledDropdown>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className ="nav-link" to ="/"> <FontAwesomeIcon icon ={faGlassWhiskey} color="white"/> Glasses</NavLink>
+                                    <NavLink className ="nav-link" to ="/"> 
+                                        <Link to = {`/glasses`}> <FontAwesomeIcon icon ={faGlassWhiskey} color="white"/> Glasses</Link>
+                                    </NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink className ="nav-link" href ="https://facebook.com">

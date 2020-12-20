@@ -3,16 +3,18 @@ import Home from './HomeComponent';
 import Header from './HeaderComponent';
 import CoctailDetails from './CoctailComponent';
 import CoctailList from './CoctailsListComponent';
+import List from './ListComponent';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
-import {fetchCoctailsByName, fetchCategories, fetchCoctailsByCategory,fetchCoctailById} from "../redux/ActionCreators"
+import {fetchCoctailsByName, fetchCategories, fetchCoctailsByCategory, fetchCoctailById, fetchGlasses} from "../redux/ActionCreators"
 
 const mapStateToProps = state => {
     return {
         search: state.search,
         categories: state.categories,
         coctail: state.coctail,
-        coctails: state.coctails
+        coctails: state.coctails,
+        glasses: state.glasses
     }
 }
 
@@ -20,7 +22,8 @@ const mapDispatchToProps = dispatch => ({
     fetchCoctailsByName: (name) => {dispatch(fetchCoctailsByName(name))},
     fetchCategories: () => {dispatch(fetchCategories())},
     fetchCoctailById: (Id) => {dispatch(fetchCoctailById(Id))},
-    fetchCoctailsByCategory: (category) => {dispatch(fetchCoctailsByCategory(category))}
+    fetchCoctailsByCategory: (category) => {dispatch(fetchCoctailsByCategory(category))},
+    fetchGlasses: () => {dispatch(fetchGlasses())}
 });
 
 
@@ -51,6 +54,7 @@ class Main extends Component {
 
     componentDidMount() {
         this.props.fetchCategories();   
+        this.props.fetchGlasses();
     }
 
     render() {
@@ -76,6 +80,7 @@ class Main extends Component {
                     <Route path = '/category/:category/:category2/:category3' component = { CoctailsWithCategory } />
                     <Route path = '/category/:category/:category2' component = { CoctailsWithCategory } />
                     <Route path = '/category/:category/' component = { CoctailsWithCategory } />
+                    <Route path = '/glasses' component = {<List></List>} />
                 </Switch>
                 <Home fetchCoctailsByName = {this.props.fetchCoctailsByName} />
             </div>
