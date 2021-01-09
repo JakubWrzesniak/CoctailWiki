@@ -1,6 +1,6 @@
 $accentColor: #fff200;
 $grayColor: #636363;
-$backgroundColor: #FEFEFE;
+$backgroundColor: rgba(247,246,228,0.42);
 $shadowColor: rgba(255, 255, 255, 0.281);
 $lightFont: rgba(255,255,255,.5);
 $darkFont: #000;
@@ -29,7 +29,14 @@ $secondColor) {
     color: $color;
     text-decoration: none;
 }
-
+.loading {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    p{
+        font-size: 2em;
+    }
+}
 .navbar-dark {
     background-color: $darkFont;
     font-weight: bold;
@@ -76,7 +83,12 @@ body {
 }
 
 .drink-list, .ingredient-list{
+    .card{
+        background-color: $backgroundColor;
+        border: none;
+    }
     .card:hover{
+        border: 1px solid rgba(0,0,0,.125);
         background-color: $grayColor;
     }
     a{
@@ -89,6 +101,7 @@ body {
         text-align: center;
         min-height: 48px;
         margin:auto;
+        font-size: 1.3em;
     }
 }
 
