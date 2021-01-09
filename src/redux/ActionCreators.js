@@ -165,3 +165,37 @@ export const glassesFaild = (errmess) => ({
 export const glassesLoading = () =>({
     type: ActionTypes.GLASSES_LOADING
 })
+
+export const fetchIngredients = () => (dispatch) => {
+    dispatch(ingredientsLoading());
+    return fetch(baseUrl + "api/json/v1/1/list.php?i=list")
+        .then(response => {
+                if (response.ok) {
+                    return response;
+                } else {
+                    var error = new Error('Error ' + response.status + ': ' + response.statusText)
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => {
+                var errmess = new Error(error.message);
+                throw errmess;
+            })
+        .then(response => response.json())
+        .then(ingredients => dispatch(addIngredients(ingredients)))
+        .catch(error => dispatch(ingredientsFaild(error.message)));
+}
+
+export const addIngredients= (ingredients) => ({
+    type: ActionTypes.ADD_INGREDIENTS,
+    payload: ingredients
+});
+
+export const ingredientsFaild = (errmess) => ({
+
+});
+
+export const ingredientsLoading = () =>({
+    type: ActionTypes.INGREDIENTS_LOADING
+})
