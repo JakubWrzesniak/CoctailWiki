@@ -2,6 +2,8 @@
 .navbar-dark {
   background-color: #000;
   font-weight: bold; }
+  .navbar-dark .nav-link {
+    display: inline-block; }
   .navbar-dark .nav-link:hover {
     color: #fff200 !important; }
     .navbar-dark .nav-link:hover .svg-inline--fa {
@@ -33,15 +35,15 @@ body {
   font-family: Helvetica, sans-serif;
   background-color: #FEFEFE; }
 
-.drink-list .card:hover {
+.drink-list .card:hover, .ingredient-list .card:hover {
   background-color: #636363; }
-.drink-list a {
+.drink-list a, .ingredient-list a {
   color: #000;
   text-decoration: none; }
-.drink-list a:hover {
+.drink-list a:hover, .ingredient-list a:hover {
   color: #fff200;
   text-decoration: none; }
-.drink-list .card-title {
+.drink-list .card-title, .ingredient-list .card-title {
   text-align: center;
   min-height: 48px;
   margin: auto; }
@@ -89,4 +91,4 @@ body {
       color: #a09999;
       text-decoration: none; }
 
-/*# sourceMappingURL=App.css.map */
+/*# sourceMappingURL=app.css.map */

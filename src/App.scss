@@ -33,6 +33,9 @@ $secondColor) {
 .navbar-dark {
     background-color: $darkFont;
     font-weight: bold;
+    .nav-link{
+         display: inline-block;
+    }
     .nav-link:hover{
         color: $accentColor!important; 
         .svg-inline--fa{
@@ -72,7 +75,7 @@ body {
     background-color: $backgroundColor;
 }
 
-.drink-list{
+.drink-list, .ingredient-list{
     .card:hover{
         background-color: $grayColor;
     }

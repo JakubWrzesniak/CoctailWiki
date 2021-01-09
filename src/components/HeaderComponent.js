@@ -3,7 +3,7 @@ import SearchBar from './SearchBarComponent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faBars, faEnvelope, faGlassWhiskey, faGlassMartiniAlt, faBeer } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import { Navbar, NavbarBrand,Nav ,NavLink,NavbarToggler,Collapse, NavItem, 
+import { Navbar, NavbarBrand,Nav ,NavLink,NavbarToggler,Collapse, NavItem, Dropdown,
     UncontrolledDropdown,DropdownItem, DropdownMenu,DropdownToggle } from 'reactstrap';
 
 
@@ -21,13 +21,49 @@ function GetDropdownItems(props){
     else return <DropdownItem></DropdownItem>
 }
 
-class Header extends Component {
+class DropdownMenuItem extends Component{
     constructor(props){
         super(props);
+        this.toggle = this.toggle.bind(this);
+        this.onMouseEnter = this.onMouseEnter.bind(this);
+        this.onMouseLeave = this.onMouseLeave.bind(this);
+        this.state ={
+            dropdownOpen: false
+        }
     }
-  
+    toggle() {
+        this.setState(prevState => ({
+          dropdownOpen: !prevState.dropdownOpen
+        }));
+    }
+    
+    onMouseEnter() {
+        this.setState({dropdownOpen: true});
+    }
+    
+    onMouseLeave() {
+        this.setState({dropdownOpen: false});
+    }
+
     render(){
-        console.log(this.props.glasses);
+        return(
+            <Dropdown onMouseOver={this.onMouseEnter} onMouseLeave={this.onMouseLeave} isOpen={this.state.dropdownOpen} toggle={this.toggle} nav inNavbar>
+                <DropdownToggle nav caret>
+                    <Link className="nav-link" to={this.props.linkTo}><FontAwesomeIcon icon ={this.props.icon}  color="white"/> {this.props.title}</Link>
+                </DropdownToggle>
+                <DropdownMenu left>
+                    <GetDropdownItems list={this.props.list} name={this.props.name} value={this.props.value}/>
+                </DropdownMenu>
+            </Dropdown>
+        )
+    }
+}
+
+class Header extends Component {
+    constructor(props){
+       super(props);
+    }
+    render(){
         return (
             <React.Fragment>    
                 <Navbar dark expand ="md">
@@ -43,37 +79,13 @@ class Header extends Component {
                                     <NavLink className ="nav-link" to ="/"><FontAwesomeIcon icon ={faGlassMartiniAlt} color="white"/> Home</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <UncontrolledDropdown nav inNavbar>
-                                        <DropdownToggle nav caret>
-                                            <FontAwesomeIcon icon ={faBars}  color="white"/> Category
-                                        </DropdownToggle>
-                                        <DropdownMenu left>
-                                            <GetDropdownItems list={this.props.categories.drinks} name={'strCategory'} value={'category'}/>
-                                        </DropdownMenu>
-                                    </UncontrolledDropdown>
+                                    <DropdownMenuItem icon = {faBars} list={this.props.categories.drinks} name={'strCategory'} value={'category'} title = {"Category"}/>
                                 </NavItem>
                                 <NavItem>
-                                    <UncontrolledDropdown nav inNavbar>
-                                        <DropdownToggle nav caret>
-                                            <Link to={`/ingredients/list`}><FontAwesomeIcon icon ={faBeer} color="white"/> Ingredients</Link>
-                                        </DropdownToggle>
-                                        <DropdownMenu left>
-                                            <GetDropdownItems list={this.props.ingredients.drinks} name={'strIngredient1'} value={'ingredients'}/>
-                                        </DropdownMenu>
-                                        <DropdownMenu left>
-                            
-                                        </DropdownMenu>
-                                    </UncontrolledDropdown>
+                                   <DropdownMenuItem icon = {faBeer} list={this.props.ingredients.drinks} name={'strIngredient1'} value={'ingredients'} title ={"Ingrediences"} linkTo = {`/ingredients/list`}/>
                                 </NavItem>
                                 <NavItem>
-                                    <UncontrolledDropdown nav inNavbar>
-                                        <DropdownToggle nav caret>
-                                            <FontAwesomeIcon icon ={faGlassWhiskey} color="white"/> Glasses
-                                        </DropdownToggle>
-                                        <DropdownMenu left>
-                                            <GetDropdownItems list={this.props.glasses.drinks} name={'strGlass'} value={'glass'}/>
-                                        </DropdownMenu>
-                                    </UncontrolledDropdown>
+                                    <DropdownMenuItem icon ={faGlassWhiskey} list={this.props.glasses.drinks} name={'strGlass'} value={'glass'} title = {"Glass"}/>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink className ="nav-link" href ="https://facebook.com">

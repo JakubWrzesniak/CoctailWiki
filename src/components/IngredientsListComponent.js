@@ -30,7 +30,7 @@ class IngredeintsList extends Component{
                 return(el);
             })
             return(
-            <div className="drink-list">
+            <div className="ingredient-list">
                 <div className ="container"> 
                     <List elems = {listItems}/>
                 </div>
