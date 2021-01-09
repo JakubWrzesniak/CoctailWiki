@@ -6,6 +6,7 @@ $lightFont: rgba(255,255,255,.5);
 $darkFont: #000;
 $fontMainSize: 20px;
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
 @mixin margin-padding($margin_top_bottom: 10px,
 $margin_left_right: auto,
 $padding_top_bottom:10px,
@@ -86,6 +87,7 @@ body {
     .card{
         background-color: $backgroundColor;
         border: none;
+        font-family: 'Rubik';
     }
     .card:hover{
         border: 1px solid rgba(0,0,0,.125);

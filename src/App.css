@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap");
 .loading {
   margin-left: auto;
   margin-right: auto;
@@ -44,7 +45,8 @@ body {
 
 .drink-list .card, .ingredient-list .card {
   background-color: rgba(247, 246, 228, 0.42);
-  border: none; }
+  border: none;
+  font-family: 'Rubik'; }
 .drink-list .card:hover, .ingredient-list .card:hover {
   border: 1px solid rgba(0, 0, 0, 0.125);
   background-color: #636363; }
