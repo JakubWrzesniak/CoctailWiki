@@ -55,8 +55,11 @@ class Header extends Component {
                                 <NavItem>
                                     <UncontrolledDropdown nav inNavbar>
                                         <DropdownToggle nav caret>
-                                            <FontAwesomeIcon icon ={faBeer} color="white"/> Alcoholic
+                                            <Link to={`/ingredients/list`}><FontAwesomeIcon icon ={faBeer} color="white"/> Ingredients</Link>
                                         </DropdownToggle>
+                                        <DropdownMenu left>
+                                            <GetDropdownItems list={this.props.ingredients.drinks} name={'strIngredient1'} value={'ingredients'}/>
+                                        </DropdownMenu>
                                         <DropdownMenu left>
                             
                                         </DropdownMenu>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function ListItem(props){
     return(
-        <Link to ={`/coctail/${props.id}`} > 
+        <Link to ={props.link} > 
             <Card>
                 <CardImg src ={props.img} alt={props.name}></CardImg>
                 <CardBody>
@@ -17,9 +17,10 @@ function ListItem(props){
 }
 
 function List(props){
-    const lisItems = props.elems.map((elem)=>
+    const elems = props.elems.sort((a,b) => {return (a["name"]<b["name"]?-1:1);});
+    const lisItems = elems.map((elem)=>
         <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-            <ListItem img ={elem[props.strThumb] + "/preview"} name={elem[props.name]} id = {elem[props.id]}/>
+            <ListItem img = {elem.img} name={elem.name} link = {elem.link}/>
         </div>
     );
     return(

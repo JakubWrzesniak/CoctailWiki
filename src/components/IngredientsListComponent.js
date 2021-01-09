@@ -3,14 +3,15 @@ import {Loading} from './LoadingComponent';
 import List from './ListComponent';
 import {Card, CardBody, CardTitle, CardImg} from 'reactstrap'
 import { Link } from 'react-router-dom';    
+import { baseUrl } from '../shared/baseUrl';
 
 
-class CoctailList extends Component{
+class IngredeintsList extends Component{
 
     constructor(props){
         super(props);
         this.state ={
-            coctails : this.props.coctails,
+            ingredients : this.props.ingredients,
             isLoading : this.props.isLoading,
             errMess : this.props.errMess
         }
@@ -20,13 +21,14 @@ class CoctailList extends Component{
         if(this.state.isLoading)
             return(<div><Loading/></div>);
         else{
-            const listItems = this.state.coctails.drinks.map((elem) => {
+            const listItems = this.state.ingredients.drinks.map((elem) => {
                 const el = {
-                    name: elem["strDrink"],
-                    img: elem["strDrinkThumb"]+"/preview",
-                    link: `/coctail/${elem["idDrink"]}`
+                    name: elem["strIngredient1"],
+                    img: baseUrl+"images/ingredients/"+elem["strIngredient1"]+"-Medium.png",
+                    link: `/ingredients/${elem["strIngredient1"]}`
                 }   
-            return(el);})
+                return(el);
+            })
             return(
             <div className="drink-list">
                 <div className ="container"> 
@@ -36,4 +38,4 @@ class CoctailList extends Component{
             );}
     };
 }
-export default CoctailList;
+export default IngredeintsList;
