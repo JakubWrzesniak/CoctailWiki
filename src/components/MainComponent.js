@@ -4,6 +4,7 @@ import Header from './HeaderComponent';
 import CoctailDetails from './CoctailComponent';
 import CoctailList from './CoctailsListComponent';
 import IngredeintsList from './IngredientsListComponent';
+import Footer from './FooterComponent';
 import List from './ListComponent';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
@@ -123,7 +124,7 @@ class Main extends Component {
                     <Route path = '/ingredients/list' component = { Ingredients }/>
                     <Route path = '/ingredients/:ingredient' component = { CoctailIngredients}/>
                 </Switch>
-                <Home fetchCoctailsByName = {this.props.fetchCoctailsByName} />
+                <Footer categories = {this.props.categories.categories} />
             </div>
         );
     }

@@ -1,6 +1,6 @@
 $accentColor: #fff200;
-$grayColor: #636363;
-$backgroundColor: rgba(247,246,228,0.42);
+$grayColor: #6363633b;
+$backgroundColor: rgba(206, 229, 241, 0.42);
 $shadowColor: rgba(255, 255, 255, 0.281);
 $lightFont: rgba(255,255,255,.5);
 $darkFont: #000;
@@ -30,6 +30,8 @@ $secondColor) {
     color: $color;
     text-decoration: none;
 }
+
+
 .loading {
     margin-left: auto;
     margin-right: auto;
@@ -78,14 +80,29 @@ $secondColor) {
     }
 }
 
+.footer{
+    @include margin-padding(40px,auto,40px,20px);
+    margin-bottom: 0px!important;
+    background-color: $darkFont;
+    color: $lightFont;
+    a{
+        @include link($lightFont)
+    }
+    a:hover{
+        @include link($accentColor)
+    }
+}
+
 body {
     font-family: Helvetica, sans-serif;
     background-color: $backgroundColor;
 }
 
 .drink-list, .ingredient-list{
+    min-height: 90vh;
     .card{
         background-color: $backgroundColor;
+        border-radius: 0em!important;
         border: none;
         font-family: 'Rubik';
     }
@@ -130,8 +147,17 @@ body {
         font-size: 4rem !important;
     }
 }
-
-.drink-info{
+.drink-leftInfo{
+    .tagList{
+        @include margin-padding(10px, auto, 10px, 10px);
+        .tagElem{
+            @include margin-padding(2px,2px,1px ,1px );
+            border-style:inherit;
+            background-color: $grayColor;
+        }
+    }
+}
+.drink-rightInfo{
     .card {
         background-color: rgba(255, 255, 255, 0.082);
         color: $darkFont;

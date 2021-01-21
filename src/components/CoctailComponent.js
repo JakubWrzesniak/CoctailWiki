@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import { connect } from 'react-redux';
 import {baseUrl} from '../shared/baseUrl';
-import {Card,CardBody,CardTitle, CardImg, CardHeader, CardText} from 'reactstrap';
+import {Card,CardBody,CardTitle, CardImg, CardHeader, CardText, NavItem} from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlassMartiniAlt } from '@fortawesome/free-solid-svg-icons';
 import {fetchCoctailById} from '../redux/ActionCreators';
@@ -32,6 +32,17 @@ function IngredientsList({array}){
     )
 }
 
+function Tags(props){
+    var tagsList;
+    if(props.tags!=null){
+    tagsList = props.tags.split(",");
+    tagsList = tagsList.map((tag) =>{ return(
+        <span className="tagElem">{tag} </span>
+        )})
+    }
+    return(<div className ="tagList">{tagsList}</div>);
+}
+
 
 function RenderCoctail({coctail}){
     console.log();
@@ -42,12 +53,13 @@ function RenderCoctail({coctail}){
                     <h1><strong>{coctail.strDrink}</strong></h1><hr/>
                 </div>
             </div>
-            <div className = "col-md-6">
+            <div className = "col-md-6 drink-leftInfo">
                 <div>
                     <img width ="100%" className="drink-img" src={coctail.strDrinkThumb } alt={coctail.strDrink}/> 
                 </div>
+                <Tags tags={coctail.strTags}/>
             </div>
-            <div className = "col-md-6 drink-info">
+            <div className = "col-md-6 drink-rightInfo">
                 <Card>
                     <CardBody>
                         <CardTitle>Ingrediance</CardTitle>
