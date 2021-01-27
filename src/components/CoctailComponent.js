@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import {Card,CardBody,CardTitle, CardImg, CardHeader, CardText, NavItem} from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlassMartiniAlt } from '@fortawesome/free-solid-svg-icons';
+import Title from './TitleComponent';
 import {Loading} from './LoadingComponent';
 
 
@@ -48,7 +49,7 @@ function RenderCoctail({coctail}){
       <React.Fragment>
             <div className ="col-12">
                 <div className="drink-name">
-                    <h1><strong>{coctail.strDrink}</strong></h1><hr/>
+                    <Title title = {coctail.strDrink}/>
                 </div>
             </div>
             <div className = "col-md-6 drink-leftInfo">

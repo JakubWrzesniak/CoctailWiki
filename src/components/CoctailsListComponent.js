@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
 import {Loading} from './LoadingComponent';
 import List from './ListComponent';
-import {Card, CardBody, CardTitle, CardImg} from 'reactstrap'
-import { Link } from 'react-router-dom';    
-
+import Title from './TitleComponent';
 
 class CoctailList extends Component{
 
     constructor(props){
         super(props);
         this.state ={
+            title: this.props.title,
             coctails : this.props.coctails,
             isLoading : this.props.isLoading,
             errMess : this.props.errMess
@@ -28,11 +27,16 @@ class CoctailList extends Component{
                 }   
             return(el);})
             return(
-            <div className="drink-list">
                 <div className ="container"> 
-                    <List elems = {listItems}/>
-                </div>
-            </div>
+                    <div className = "row">
+                         <div className =" col-12">
+                            <Title title = {this.state.title}/>   
+                        </div>
+                    </div>
+                    <div className="drink-list">
+                        <List elems = {listItems}/>
+                    </div>
+                 </div>
             );}
     };
 }

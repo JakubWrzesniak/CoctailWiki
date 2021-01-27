@@ -91,14 +91,14 @@ class Main extends Component {
             if(match.params.category2) category += "/" + match.params.category2
             if(match.params.category3) category += "/" + match.params.category3
             this.handleCoctailsCategory(category);
-            return(<CoctailList coctails = {this.props.coctails.coctails} isLoading = {this.props.coctails.isLoading} errMess = {this.props.coctails.errMess}/>)
+            return(<CoctailList title = {category} coctails = {this.props.coctails.coctails} isLoading = {this.props.coctails.isLoading} errMess = {this.props.coctails.errMess}/>)
         }
 
         const CoctailsWithGlass = ({match}) =>{
             var glass = match.params.glass;
             if(match.params.glass2) glass += "/" + match.params.glass2
             this.handleCoctailsGlass(glass);
-            return(<CoctailList coctails = {this.props.coctails.coctails} isLoading = {this.props.coctails.isLoading} errMess = {this.props.coctails.errMess}/>)
+            return(<CoctailList title = {glass} coctails = {this.props.coctails.coctails} isLoading = {this.props.coctails.isLoading} errMess = {this.props.coctails.errMess}/>)
         }
 
         const Ingredients = () =>{
@@ -108,7 +108,7 @@ class Main extends Component {
         const CoctailIngredients = ({match}) => {
             var ingredient = match.params.ingredient;
             this.handleCoctailsIngredients(ingredient);
-            return(<CoctailList coctails = {this.props.coctails.coctails} isLoading = {this.props.coctails.isLoading} errMess = {this.props.coctails.errMess}/>)
+            return(<CoctailList title = {ingredient} coctails = {this.props.coctails.coctails} isLoading = {this.props.coctails.isLoading} errMess = {this.props.coctails.errMess}/>)
         }
         console.log(this.props.ingredients);
         return(

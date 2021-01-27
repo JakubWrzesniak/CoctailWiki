@@ -99,6 +99,25 @@ body {
     background-color: $backgroundColor;
 }
 
+.title{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    hr {
+        width: 30%;
+        background: white;
+        height: 1px;
+        margin-top: 2rem;
+    }
+    h1 {
+        font-family: 'Bebas Neue', cursive;
+        color: $darkFont;
+        text-align: center;
+        font-size: 4rem !important;
+    }
+}
+
 .drink-list, .ingredient-list{
     min-height: 90vh;
     .card{
@@ -133,24 +152,7 @@ body {
     $shadowColor);
 }
 
-.drink-name {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    hr {
-        width: 30%;
-        background: white;
-        height: 1px;
-        margin-top: 2rem;
-    }
-    h1 {
-        font-family: 'Bebas Neue', cursive;
-        color: $darkFont;
-        text-align: center;
-        font-size: 4rem !important;
-    }
-}
+
 .drink-leftInfo{
     .tagList{
         @include margin-padding(10px, auto, 10px, 10px);
