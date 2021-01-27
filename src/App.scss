@@ -32,7 +32,9 @@ $secondColor) {
     text-decoration: none;
 }
 
-
+.main-body{
+    min-height: 90vh !important;
+}
 .loading {
     margin-left: auto;
     margin-right: auto;
@@ -119,7 +121,6 @@ body {
 }
 
 .drink-list, .ingredient-list{
-    min-height: 90vh;
     .card{
         background-color: $backgroundColor;
         border-radius: 0em!important;
