@@ -70,19 +70,21 @@ body {
     border: none;
     font-family: 'Rubik'; }
   .drink-list .card:hover, .ingredient-list .card:hover {
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    background-color: #6363633b; }
+    border: 1px solid #fff200;
+    background-color: rgba(255, 255, 255, 0.281); }
   .drink-list a, .ingredient-list a {
     color: #000;
     text-decoration: none; }
   .drink-list a:hover, .ingredient-list a:hover {
-    color: #fff200;
+    color: #000;
     text-decoration: none; }
   .drink-list .card-title, .ingredient-list .card-title {
     text-align: center;
     min-height: 48px;
     margin: auto;
     font-size: 1.3em; }
+  .drink-list .card-img, .ingredient-list .card-img {
+    border-radius: 0% !important; }
 
 .drink-img {
   box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.281), 0 6px 20px 0 rgba(255, 255, 255, 0.281); }

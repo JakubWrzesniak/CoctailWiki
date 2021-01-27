@@ -107,20 +107,23 @@ body {
         font-family: 'Rubik';
     }
     .card:hover{
-        border: 1px solid rgba(0,0,0,.125);
-        background-color: $grayColor;
+        border: 1px solid $accentColor;
+        background-color: $shadowColor;
     }
     a{
         @include link($darkFont);
     }
     a:hover{
-        @include link($accentColor);
+        @include link($darkFont);
     }
     .card-title{
         text-align: center;
         min-height: 48px;
         margin:auto;
         font-size: 1.3em;
+    }
+    .card-img{
+     border-radius: 0% !important;
     }
 }
 
