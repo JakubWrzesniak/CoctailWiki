@@ -1,6 +1,7 @@
 $accentColor: #fff200;
-$grayColor: #6363633b;
-$backgroundColor: rgba(206, 229, 241, 0.42);
+$blueAccentColor: #00054b;
+$grayColor: #474747d5;
+$backgroundColor: rgba(209, 228, 238, 0.42);
 $shadowColor: rgba(255, 255, 255, 0.281);
 $lightFont: rgba(255,255,255,.5);
 $darkFont: #000;
@@ -161,12 +162,17 @@ body {
     }
 }
 .drink-rightInfo{
+    a{
+        @include link($grayColor);
+    }
+    a:hover{
+        @include link($blueAccentColor);
+    }
     .card {
         background-color: rgba(255, 255, 255, 0.082);
         color: $darkFont;
         list-style-image: url(./glass-martini-alt-solid.svg);
     }
-
     .coctail-list {
         margin-top: 20px;
         margin-bottom: 20px;

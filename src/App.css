@@ -60,12 +60,12 @@
 
 body {
   font-family: Helvetica, sans-serif;
-  background-color: rgba(206, 229, 241, 0.42); }
+  background-color: rgba(209, 228, 238, 0.42); }
 
 .drink-list, .ingredient-list {
   min-height: 90vh; }
   .drink-list .card, .ingredient-list .card {
-    background-color: rgba(206, 229, 241, 0.42);
+    background-color: rgba(209, 228, 238, 0.42);
     border-radius: 0em !important;
     border: none;
     font-family: 'Rubik'; }
@@ -124,8 +124,14 @@ body {
     padding-left: 1px;
     padding-right: 1px;
     border-style: inherit;
-    background-color: #6363633b; }
+    background-color: #474747d5; }
 
+.drink-rightInfo a {
+  color: #474747d5;
+  text-decoration: none; }
+.drink-rightInfo a:hover {
+  color: #00054b;
+  text-decoration: none; }
 .drink-rightInfo .card {
   background-color: rgba(255, 255, 255, 0.082);
   color: #000;

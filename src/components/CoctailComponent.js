@@ -1,10 +1,8 @@
 import React,{Component} from 'react';
-import { connect } from 'react-redux';
-import {baseUrl} from '../shared/baseUrl';
+import { Link } from 'react-router-dom';
 import {Card,CardBody,CardTitle, CardImg, CardHeader, CardText, NavItem} from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlassMartiniAlt } from '@fortawesome/free-solid-svg-icons';
-import {fetchCoctailById} from '../redux/ActionCreators';
 import {Loading} from './LoadingComponent';
 
 
@@ -13,11 +11,11 @@ function IngredientsList({array}){
         const ingredient = array["strIngredient"+i.toString()];
         const measure = array["strMeasure"+i.toString()];
         if(ingredient)
-            return(measure ? measure + " " + ingredient : ingredient);
+            return(<Link to = {`/ingredients/${ingredient}`}>{measure ? measure : ""} {ingredient}</Link>);
         } 
-    var list = ()=>{
-        var i =1;
-        var list =[];
+    var list = () => {
+        var i = 1;
+        var list = [];
         while(i<=15){
             var elem = ingredient(i);
             if(elem) list.push(elem);
