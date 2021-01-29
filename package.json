@@ -39,7 +39,9 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "sass": "node-sass -w sass/ -o css/"
+        "sass": "node-sass -w sass/ -o css/",
+        "predeploy": "yarn build",
+        "deploy": "gh-pages -d build"
     },
     "eslintConfig": {
         "extends": [
