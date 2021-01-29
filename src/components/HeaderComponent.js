@@ -68,9 +68,8 @@ class Header extends Component {
                 <Navbar fixed="top"  dark expand ="md">
                     <div className="container">
                         <NavbarToggler/>
-                        <NavbarBrand className="mr-auto" href="/">
-                            <img src="assets/images/logo.png" height="60"
-                                alt="Coctail"/>
+                        <NavbarBrand className="mr-auto" href="/CoctailWiki/">
+                            <img src="assets/images/logo.png" height="60" alt="Coctail"/>
                         </NavbarBrand>
                         <Collapse isOpen = {true} navbar>
                             <Nav navbar>

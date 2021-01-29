@@ -103,7 +103,7 @@ class Main extends Component {
             const breadCrumb = this.props.coctail.coctail.drinks == null ? match.params.coctailId : this.props.coctail.coctail.drinks[0].strDrink; 
             return(<div className="main-body">
                 <Breadcrumb>
-                    <BreadcrumbItem><a href = "/">Home</a></BreadcrumbItem>
+                    <BreadcrumbItem><a href = "/CoctailWiki/">Home</a></BreadcrumbItem>
                     <BreadcrumbItem><a href = "/CoctailWiki/coctails/">Coctails</a></BreadcrumbItem>
                     <BreadcrumbItem active>{breadCrumb}</BreadcrumbItem>
                  </Breadcrumb>
@@ -118,7 +118,7 @@ class Main extends Component {
             this.handleCoctailsCategory(category);
             return(<div className ="main-body">
                 <Breadcrumb>
-                    <BreadcrumbItem><a href = "/">Home</a></BreadcrumbItem>
+                    <BreadcrumbItem><a href = "/CoctailWiki/">Home</a></BreadcrumbItem>
                     <BreadcrumbItem><a href = "/CoctailWiki/category/">Coctails</a></BreadcrumbItem>
                     <BreadcrumbItem active>{category}</BreadcrumbItem>
                  </Breadcrumb>
@@ -130,7 +130,14 @@ class Main extends Component {
             var glass = match.params.glass;
             if(match.params.glass2) glass += "/" + match.params.glass2
             this.handleCoctailsGlass(glass);
-            return(<div className ="main-body"><CoctailList title = {glass} coctails = {this.props.coctails.coctails} isLoading = {this.props.coctails.isLoading} errMess = {this.props.coctails.errMess}/></div>)
+            return(<div className ="main-body">
+                <Breadcrumb>
+                    <BreadcrumbItem><a href = "/CoctailWiki/">Home</a></BreadcrumbItem>
+                    <BreadcrumbItem><a href = "/CoctailWiki/glass/">Glass</a></BreadcrumbItem>
+                    <BreadcrumbItem active>{glass}</BreadcrumbItem>
+                 </Breadcrumb>
+                <CoctailList title = {glass} coctails = {this.props.coctails.coctails} isLoading = {this.props.coctails.isLoading} errMess = {this.props.coctails.errMess}/>
+                </div>)
         }
 
         const CoctailsWithLetter = ({match}) => {
@@ -138,7 +145,7 @@ class Main extends Component {
             this.handleCoctailsLetter(letter);
             return(<div className = "main-body">
                  <Breadcrumb>
-                    <BreadcrumbItem><a href = "/">Home</a></BreadcrumbItem>
+                    <BreadcrumbItem><a href = "/CoctailWiki/">Home</a></BreadcrumbItem>
                     <BreadcrumbItem><a href = "/CoctailWiki/coctails/">Coctails</a></BreadcrumbItem>
                     <BreadcrumbItem active>{letter}</BreadcrumbItem>
                  </Breadcrumb>
@@ -162,7 +169,7 @@ class Main extends Component {
             this.handleCoctailsIngredients(ingredient);
             return(<div className ="main-body">
                 <Breadcrumb>
-                        <BreadcrumbItem><a href = "/">Home</a></BreadcrumbItem>
+                        <BreadcrumbItem><a href = "/CoctailWiki/">Home</a></BreadcrumbItem>
                         <BreadcrumbItem><a href = "/CoctailWiki/ingredients/list">Ingredients</a></BreadcrumbItem>
                         <BreadcrumbItem active>{ingredient}</BreadcrumbItem>
                  </Breadcrumb>
