@@ -76,7 +76,7 @@ class Header extends Component {
                         <Collapse isOpen = {true} navbar>
                             <Nav navbar>
                                 <NavItem>
-                                    <NavLink className ="nav-link" to ="/"><FontAwesomeIcon icon ={faGlassMartiniAlt} color="white"/> Home</NavLink>
+                                    <NavLink className ="nav-link" href ="/"><FontAwesomeIcon icon ={faGlassMartiniAlt} color="white"/> Home</NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <DropdownMenuItem icon = {faBars} list={this.props.categories.drinks} name={'strCategory'} value={'category'} title = {"Category"}/>
