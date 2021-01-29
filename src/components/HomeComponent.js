@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 import Title from './TitleComponent';
 import CoctailDetails from './CoctailComponent';
 import AlphabetList from './AlphabetBarComponent';
-import { Link } from 'react-router-dom';
 
 class Home extends Component{
 
@@ -15,7 +14,7 @@ class Home extends Component{
        
     render(){
         
-        if(this.props.random.length!=0)
+        if(this.props.random.length !== 0)
         return(
                 <div className = "container" >
                     <div className = "row">

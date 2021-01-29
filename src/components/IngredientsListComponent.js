@@ -1,8 +1,6 @@
-import React, {Component, useDebugValue} from 'react';
+import React, {Component} from 'react';
 import {Loading} from './LoadingComponent';
 import List from './ListComponent';
-import {Card, CardBody, CardTitle, CardImg} from 'reactstrap'
-import { Link } from 'react-router-dom';    
 import { baseUrl } from '../shared/baseUrl';
 import Title from './TitleComponent';
 

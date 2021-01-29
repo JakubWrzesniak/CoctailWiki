@@ -1,9 +1,6 @@
 import React,{Component} from 'react';
 import { Link } from 'react-router-dom';
-import {Card,CardBody,CardTitle, CardImg, CardHeader, CardText, NavItem} from 'reactstrap';
-import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGlassMartiniAlt } from '@fortawesome/free-solid-svg-icons';
+import {Card,CardBody,CardTitle, CardText} from 'reactstrap';
 import Title from './TitleComponent';
 import {Loading} from './LoadingComponent';
 

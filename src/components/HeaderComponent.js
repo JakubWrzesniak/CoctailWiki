@@ -1,10 +1,9 @@
 import React,{Component} from 'react'; 
-import SearchBar from './SearchBarComponent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faBars, faEnvelope, faGlassWhiskey, faGlassMartiniAlt, faBeer } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faEnvelope, faGlassWhiskey, faGlassMartiniAlt, faBeer } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { Navbar, NavbarBrand,Nav ,NavLink,NavbarToggler,Collapse, NavItem, Dropdown,
-    UncontrolledDropdown,DropdownItem, DropdownMenu,DropdownToggle } from 'reactstrap';
+    DropdownItem, DropdownMenu,DropdownToggle } from 'reactstrap';
 
 
 function GetDropdownItems(props){
