@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/CoctailWiki/static/css/main.4f17e694.chunk.css",
-    "main.js": "/CoctailWiki/static/js/main.5734bc8a.chunk.js",
-    "main.js.map": "/CoctailWiki/static/js/main.5734bc8a.chunk.js.map",
+    "main.css": "/CoctailWiki/static/css/main.0ba4c680.chunk.css",
+    "main.js": "/CoctailWiki/static/js/main.a590d206.chunk.js",
+    "main.js.map": "/CoctailWiki/static/js/main.a590d206.chunk.js.map",
     "runtime-main.js": "/CoctailWiki/static/js/runtime-main.12aedf84.js",
     "runtime-main.js.map": "/CoctailWiki/static/js/runtime-main.12aedf84.js.map",
     "static/css/2.31a86f09.chunk.css": "/CoctailWiki/static/css/2.31a86f09.chunk.css",
-    "static/js/2.4ea38ffc.chunk.js": "/CoctailWiki/static/js/2.4ea38ffc.chunk.js",
-    "static/js/2.4ea38ffc.chunk.js.map": "/CoctailWiki/static/js/2.4ea38ffc.chunk.js.map",
+    "static/js/2.1a4c14c3.chunk.js": "/CoctailWiki/static/js/2.1a4c14c3.chunk.js",
+    "static/js/2.1a4c14c3.chunk.js.map": "/CoctailWiki/static/js/2.1a4c14c3.chunk.js.map",
     "static/js/3.d4644464.chunk.js": "/CoctailWiki/static/js/3.d4644464.chunk.js",
     "static/js/3.d4644464.chunk.js.map": "/CoctailWiki/static/js/3.d4644464.chunk.js.map",
     "index.html": "/CoctailWiki/index.html",
     "static/css/2.31a86f09.chunk.css.map": "/CoctailWiki/static/css/2.31a86f09.chunk.css.map",
-    "static/css/main.4f17e694.chunk.css.map": "/CoctailWiki/static/css/main.4f17e694.chunk.css.map",
-    "static/js/2.4ea38ffc.chunk.js.LICENSE.txt": "/CoctailWiki/static/js/2.4ea38ffc.chunk.js.LICENSE.txt",
+    "static/css/main.0ba4c680.chunk.css.map": "/CoctailWiki/static/css/main.0ba4c680.chunk.css.map",
+    "static/js/2.1a4c14c3.chunk.js.LICENSE.txt": "/CoctailWiki/static/js/2.1a4c14c3.chunk.js.LICENSE.txt",
     "static/media/App.css": "/CoctailWiki/static/media/glass-martini-alt-solid.813044fc.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.12aedf84.js",
     "static/css/2.31a86f09.chunk.css",
-    "static/js/2.4ea38ffc.chunk.js",
-    "static/css/main.4f17e694.chunk.css",
-    "static/js/main.5734bc8a.chunk.js"
+    "static/js/2.1a4c14c3.chunk.js",
+    "static/css/main.0ba4c680.chunk.css",
+    "static/js/main.a590d206.chunk.js"
   ]
 }
