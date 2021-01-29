@@ -63,6 +63,19 @@ body {
   background: linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px, linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px, linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px, linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px, linear-gradient(90deg, #1b1b1b 10px, transparent 10px), linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
   background-color: #131313;
   background-size: 20px 20px; }
+  body .breadcrumb {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgba(209, 228, 238, 0.42);
+    width: 70%; }
+    body .breadcrumb .breadcrumb-item, body .breadcrumb .breadcrumb-item::before {
+      color: black; }
   body hr {
     width: 30%;
     background: #fff200;
@@ -83,6 +96,15 @@ body {
     color: #f8f1f1;
     text-align: center;
     font-size: 3rem; }
+  body a:link {
+    color: #f8f1f1;
+    text-decoration: none; }
+  body a:visited {
+    color: #f8f1f1;
+    text-decoration: none; }
+  body a:hover {
+    color: #fff200;
+    text-decoration: none; }
 
 .title {
   padding-top: 20px;

@@ -111,6 +111,14 @@ body {
         linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
     background-color: #131313;
     background-size: 20px 20px;
+    .breadcrumb {
+        @include margin-padding(0px);
+        background-color:$backgroundColor;
+        width: 70%;
+        .breadcrumb-item, .breadcrumb-item::before{
+            color:black;
+        }
+    }
     hr {
         width: 30%;
         background:$accentColor;
@@ -125,6 +133,15 @@ body {
     }
     h3{
         @include title(3rem);
+    }
+    a:link {
+        @include link($fontColor1);
+    }
+    a:visited {
+        @include link($fontColor1);
+    }
+    a:hover {
+        @include link($accentColor);
     }
 }
 
