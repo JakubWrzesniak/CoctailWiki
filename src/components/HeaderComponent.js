@@ -14,8 +14,7 @@ function GetDropdownItems(props){
     if(list != null && list.length > 0){
         
         return(list.map((elem)=>{
-            const link = "/CoctailWiki/" + value + "/" + elem[name];
-            return(<DropdownItem href={link}>{elem[name]}</DropdownItem>);
+            return(<Link to = {`/CoctailWiki/${value}/${elem[name]}`}><DropdownItem>{elem[name]}</DropdownItem></Link>);
         }));
     }
     else return <DropdownItem></DropdownItem>
