@@ -23,7 +23,7 @@ class CoctailList extends Component{
                 const el = {
                     name: elem["strDrink"],
                     img: elem["strDrinkThumb"]+"/preview",
-                    link: `/coctail/${elem["idDrink"]}`
+                    link: `/CoctailWiki/coctail/${elem["idDrink"]}`
                 }   
             return(el);})
             return(

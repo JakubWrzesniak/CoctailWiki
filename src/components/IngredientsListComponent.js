@@ -24,7 +24,7 @@ class IngredeintsList extends Component{
                 const el = {
                     name: elem["strIngredient1"],
                     img: baseUrl+"images/ingredients/"+elem["strIngredient1"]+"-Medium.png",
-                    link: `/ingredients/${elem["strIngredient1"]}`
+                    link: `/CoctailWiki/ingredients/${elem["strIngredient1"]}`
                 }   
                 return(el);
             })

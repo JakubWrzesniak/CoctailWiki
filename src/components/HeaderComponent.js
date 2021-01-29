@@ -14,7 +14,7 @@ function GetDropdownItems(props){
     if(list != null && list.length > 0){
         
         return(list.map((elem)=>{
-            return(<Link to = {`/${value}/${(elem[name])}`}><DropdownItem>{elem[name]}</DropdownItem></Link>);
+            return(<Link to = {`/CoctailWiki/${value}/${(elem[name])}`}><DropdownItem>{elem[name]}</DropdownItem></Link>);
         }));
     }
     else return <DropdownItem></DropdownItem>
@@ -75,7 +75,7 @@ class Header extends Component {
                         <Collapse isOpen = {true} navbar>
                             <Nav navbar>
                                 <NavItem>
-                                    <NavLink className ="nav-link" href ="/"><FontAwesomeIcon icon ={faGlassMartiniAlt} color="white"/> Home</NavLink>
+                                    <NavLink className ="nav-link" href ="/CoctailWiki/"><FontAwesomeIcon icon ={faGlassMartiniAlt} color="white"/> Home</NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <DropdownMenuItem icon = {faBars} list={this.props.categories.drinks} name={'strCategory'} value={'category'} title = {"Category"}/>
@@ -86,11 +86,11 @@ class Header extends Component {
                                 <NavItem>
                                     <DropdownMenuItem icon ={faGlassWhiskey} list={this.props.glasses.drinks} name={'strGlass'} value={'glass'} title = {"Glass"}/>
                                 </NavItem>
-                                <NavItem>
+                                {/* <NavItem>
                                     <NavLink className ="nav-link" href ="https://facebook.com">
                                         <FontAwesomeIcon icon ={faEnvelope}  color="white"/> Contact
                                     </NavLink>
-                                </NavItem>
+                                </NavItem> */}
                             </Nav>
                         </Collapse>
                     </div>

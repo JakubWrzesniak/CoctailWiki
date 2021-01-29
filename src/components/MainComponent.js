@@ -104,7 +104,7 @@ class Main extends Component {
             return(<div className="main-body">
                 <Breadcrumb>
                     <BreadcrumbItem><a href = "/">Home</a></BreadcrumbItem>
-                    <BreadcrumbItem><a href = "/coctails/">Coctails</a></BreadcrumbItem>
+                    <BreadcrumbItem><a href = "/CoctailWiki/coctails/">Coctails</a></BreadcrumbItem>
                     <BreadcrumbItem active>{breadCrumb}</BreadcrumbItem>
                  </Breadcrumb>
                 <CoctailDetails coctail = {this.props.coctail.coctail} isLoading = {this.props.coctail.isLoading} errMess = {this.props.coctail.errMess}/>
@@ -119,7 +119,7 @@ class Main extends Component {
             return(<div className ="main-body">
                 <Breadcrumb>
                     <BreadcrumbItem><a href = "/">Home</a></BreadcrumbItem>
-                    <BreadcrumbItem><a href = "/category/">Coctails</a></BreadcrumbItem>
+                    <BreadcrumbItem><a href = "/CoctailWiki/category/">Coctails</a></BreadcrumbItem>
                     <BreadcrumbItem active>{category}</BreadcrumbItem>
                  </Breadcrumb>
                 <CoctailList title = {category} coctails = {this.props.coctails.coctails} isLoading = {this.props.coctails.isLoading} errMess = {this.props.coctails.errMess}/>
@@ -139,7 +139,7 @@ class Main extends Component {
             return(<div className = "main-body">
                  <Breadcrumb>
                     <BreadcrumbItem><a href = "/">Home</a></BreadcrumbItem>
-                    <BreadcrumbItem><a href = "/coctails/">Coctails</a></BreadcrumbItem>
+                    <BreadcrumbItem><a href = "/CoctailWiki/coctails/">Coctails</a></BreadcrumbItem>
                     <BreadcrumbItem active>{letter}</BreadcrumbItem>
                  </Breadcrumb>
                 <AlphabetList />
@@ -150,7 +150,7 @@ class Main extends Component {
         const Ingredients = () =>{
                 return(<div className = "main-body">
                     <Breadcrumb>
-                        <BreadcrumbItem><a href = "/">Home</a></BreadcrumbItem>
+                        <BreadcrumbItem><a href = "/CoctailWiki/">Home</a></BreadcrumbItem>
                         <BreadcrumbItem active>Ingredients</BreadcrumbItem>
                     </Breadcrumb>
                     <IngredeintsList ingredients={this.props.ingredients.ingredients} isLoading = {this.props.ingredients.isLoading} errMess={this.props.ingredients.errMess}/>
@@ -163,7 +163,7 @@ class Main extends Component {
             return(<div className ="main-body">
                 <Breadcrumb>
                         <BreadcrumbItem><a href = "/">Home</a></BreadcrumbItem>
-                        <BreadcrumbItem><a href = "/ingredients/list">Ingredients</a></BreadcrumbItem>
+                        <BreadcrumbItem><a href = "/CoctailWiki/ingredients/list">Ingredients</a></BreadcrumbItem>
                         <BreadcrumbItem active>{ingredient}</BreadcrumbItem>
                  </Breadcrumb>
                 <CoctailList title = {ingredient} coctails = {this.props.coctails.coctails} isLoading = {this.props.coctails.isLoading} errMess = {this.props.coctails.errMess}/>
@@ -174,15 +174,15 @@ class Main extends Component {
             <div className="App">
                 <Header categories = {this.props.categories.categories} glasses = {this.props.glasses.glasses} ingredients = {this.props.ingredients.ingredients}/>
                 <Switch>        
-                    <Route path = '/coctails/:firstLetter' component = { CoctailsWithLetter }/>
-                    <Route path = '/coctail/:coctailId' component = { CoctailWithId } />
-                    <Route path = '/category/:category/:category2/:category3' component = { CoctailsWithCategory } />
-                    <Route path = '/category/:category/:category2' component = { CoctailsWithCategory } />
-                    <Route path = '/category/:category/' component = { CoctailsWithCategory } />
-                    <Route path = '/glass/:glass/:glass2' component = { CoctailsWithGlass } />
-                    <Route path = '/glass/:glass' component = { CoctailsWithGlass } />
-                    <Route path = '/ingredients/list' component = { Ingredients }/>
-                    <Route path = '/ingredients/:ingredient' component = { CoctailIngredients}/>
+                    <Route path = '/CoctailWiki/coctails/:firstLetter' component = { CoctailsWithLetter }/>
+                    <Route path = '/CoctailWiki/coctail/:coctailId' component = { CoctailWithId } />
+                    <Route path = '/CoctailWiki/category/:category/:category2/:category3' component = { CoctailsWithCategory } />
+                    <Route path = '/CoctailWiki/category/:category/:category2' component = { CoctailsWithCategory } />
+                    <Route path = '/CoctailWiki/category/:category/' component = { CoctailsWithCategory } />
+                    <Route path = '/CoctailWiki/glass/:glass/:glass2' component = { CoctailsWithGlass } />
+                    <Route path = '/CoctailWiki/glass/:glass' component = { CoctailsWithGlass } />
+                    <Route path = '/CoctailWiki/ingredients/list' component = { Ingredients }/>
+                    <Route path = '/CoctailWiki/ingredients/:ingredient' component = { CoctailIngredients}/>
                     <Route path = '' component = { HomePage } />
                 </Switch>
                 <Footer categories = {this.props.categories.categories} />

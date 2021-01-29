@@ -10,7 +10,7 @@ function IngredientsList({array}){
         const ingredient = array["strIngredient"+i.toString()];
         const measure = array["strMeasure"+i.toString()];
         if(ingredient)
-            return(<Link to = {`/ingredients/${ingredient}`}>{measure ? measure : ""} {ingredient}</Link>);
+            return(<Link to = {`/CoctailWiki/ingredients/${ingredient}`}>{measure ? measure : ""} {ingredient}</Link>);
         } 
     var list = () => {
         var i = 1;
