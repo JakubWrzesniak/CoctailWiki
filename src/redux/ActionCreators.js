@@ -2,11 +2,12 @@ import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseUrl';
 
 
-export const fetchCoctailsByName = (name) => (dispatch) => {
+export const fetchCoctailsBy = (type, value) => (dispatch) => {
 
     dispatch(coctailsLoading());
-
-    return fetch(baseUrl + "api/json/v1/1/search.php?s=" + name)
+    console.log(value);
+    console.log(baseUrl + "api/json/v1/1/search.php?" + type + "=" + value);
+    return fetch(baseUrl + "api/json/v1/1/search.php?" + type + "=" + value)
         .then(response => {
                 if (response.ok) {
 
@@ -26,8 +27,7 @@ export const fetchCoctailsByName = (name) => (dispatch) => {
         .catch(error => dispatch(coctailsFaild(error.message)));
 }
 
-
-export const fetchCoctailsBy= (value, id) => (dispatch) => {
+export const fetchFilterCoctails = (value, id) => (dispatch) => {
 
     dispatch(coctailsLoading());
 
@@ -65,8 +65,6 @@ export const coctailsLoading = () =>({
     type: ActionTypes.COCTAILS_LOADING
 })
 
-
-
 export const fetchCoctailById = (id) => (dispatch) => {
     dispatch(coctailLoading());
     return fetch(baseUrl + "api/json/v1/1/lookup.php?i=" + id)
@@ -87,6 +85,28 @@ export const fetchCoctailById = (id) => (dispatch) => {
         .then(coctail => dispatch(addCoctail(coctail)))
         .catch(error => dispatch(coctailFaild(error.message)));
 }
+
+export const fetchRandomCoctail = () => (dispatch) => {
+    dispatch(coctailLoading());
+    return fetch(baseUrl + "api/json/v1/1/random.php")
+        .then(response => {
+                if (response.ok) {
+                    return response;
+                } else {
+                    var error = new Error('Error ' + response.status + ': ' + response.statusText)
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => {
+                var errmess = new Error(error.message);
+                throw errmess;
+            })
+        .then(response => response.json())
+        .then(coctail => dispatch(addCoctail(coctail)))
+        .catch(error => dispatch(coctailFaild(error.message)));
+}
+
 
 export const coctailFaild = (errmess) => ({
 

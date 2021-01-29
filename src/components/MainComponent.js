@@ -5,12 +5,11 @@ import CoctailDetails from './CoctailComponent';
 import CoctailList from './CoctailsListComponent';
 import IngredeintsList from './IngredientsListComponent';
 import Footer from './FooterComponent';
-import List from './ListComponent';
+import AlphabetList from './AlphabetBarComponent';
 import { connect } from 'react-redux';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
-import {fetchCoctailsByName, fetchCategories, fetchCoctailsBy, fetchCoctailById, fetchGlasses, fetchIngredients} from "../redux/ActionCreators"
-import { Loading } from './LoadingComponent';
-import { baseUrl } from '../shared/baseUrl';
+import { Switch, Route, withRouter } from 'react-router-dom';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import {fetchCoctailsBy, fetchCategories, fetchFilterCoctails, fetchCoctailById, fetchGlasses, fetchIngredients, fetchRandomCoctail} from "../redux/ActionCreators"
 
 const mapStateToProps = state => {
     return {
@@ -24,12 +23,13 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    fetchCoctailsByName: (name) => {dispatch(fetchCoctailsByName(name))},
+    fetchCoctailsBy: (type, value) => {dispatch(fetchCoctailsBy(type, value))},
     fetchCategories: () => {dispatch(fetchCategories())},
     fetchCoctailById: (Id) => {dispatch(fetchCoctailById(Id))},
-    fetchCoctailsBy: (value, id) => {dispatch(fetchCoctailsBy(value, id))},
+    fetchFilterCoctails: (value, id) => {dispatch(fetchFilterCoctails(value, id))},
     fetchGlasses: () => {dispatch(fetchGlasses())},
-    fetchIngredients: () => {dispatch(fetchIngredients())} 
+    fetchIngredients: () => {dispatch(fetchIngredients())} ,
+    fetchRandomCoctail: () => {dispatch(fetchRandomCoctail())},
 });
 
 
@@ -38,52 +38,77 @@ class Main extends Component {
         super(props);
         this.state ={
             coctailId: -1,
-            coctailFilter: ""
+            coctailFilter: "",
         }
 
         this.handleCoctail = this.handleCoctail.bind(this); 
         this.handleCoctailsCategory = this.handleCoctailsCategory.bind(this); 
         this.handleCoctailsGlass = this.handleCoctailsGlass.bind(this); 
         this.handleCoctailsIngredients = this.handleCoctailsIngredients.bind(this);
+        this.handleCoctailsLetter = this.handleCoctailsLetter.bind(this);
     }
 
     handleCoctail(id){
-        if(id!= this.state.coctailId){
+        if(id !== this.state.coctailId){
             this.setState({coctailId: id});
             this.props.fetchCoctailById(id);
         }
     }
+
+    handleCoctailsLetter(letter){
+        if (letter !== this.state.coctailFilter){
+            this.setState({coctailFilter: letter});
+            this.props.fetchCoctailsBy("f",letter);
+        }
+    }
     handleCoctailsCategory(categoryName){
-        if(categoryName != this.state.coctailFilter){
+        if(categoryName !== this.state.coctailFilter){
             this.setState({coctailFilter: categoryName});
-            this.props.fetchCoctailsBy(categoryName, "c");
+            this.props.fetchFilterCoctails(categoryName, "c");
         }
     }
 
     handleCoctailsGlass(glassName){
-        if(glassName != this.state.coctailFilter){
+        if(glassName !== this.state.coctailFilter){
             this.setState({coctailFilter: glassName});
-            this.props.fetchCoctailsBy(glassName, "g");
+            this.props.fetchFilterCoctails(glassName, "g");
         }
     }
     handleCoctailsIngredients(ingredientName){
-        if(ingredientName != this.state.coctailFilter){
+        if(ingredientName !== this.state.coctailFilter){
             this.setState({coctailFilter: ingredientName});
-            this.props.fetchCoctailsBy(ingredientName, "i");
+            this.props.fetchFilterCoctails(ingredientName, "i");
         }
     }
 
     componentDidMount() {
+        this.props.fetchRandomCoctail();
         this.props.fetchCategories();   
         this.props.fetchGlasses();
         this.props.fetchIngredients();
     }
 
     render() {
+        const HomePage = () => {
+            return(<div className = "main-body">
+                <Breadcrumb>
+                    <BreadcrumbItem active>Home</BreadcrumbItem>
+                </Breadcrumb>
+                <Home random = {this.props.coctail.coctail}/>
+                </div>);
+        }
         
         const CoctailWithId = ({match}) => {
-            this.handleCoctail(match.params.coctailId);            
-            return(<div className="main-body"><CoctailDetails coctail = {this.props.coctail.coctail} isLoading = {this.props.coctail.isLoading} errMess = {this.props.coctail.errMess}/></div>)
+            this.handleCoctail(match.params.coctailId);   
+            const breadCrumb = this.props.coctail.coctail.drinks == null ? match.params.coctailId : this.props.coctail.coctail.drinks[0].strDrink; 
+            return(<div className="main-body">
+                <Breadcrumb>
+                    <BreadcrumbItem><a href = "/">Home</a></BreadcrumbItem>
+                    <BreadcrumbItem><a href = "/coctails/">Coctails</a></BreadcrumbItem>
+                    <BreadcrumbItem active>{breadCrumb}</BreadcrumbItem>
+                 </Breadcrumb>
+                <CoctailDetails coctail = {this.props.coctail.coctail} isLoading = {this.props.coctail.isLoading} errMess = {this.props.coctail.errMess}/>
+                </div>)
         }
 
         const CoctailsWithCategory = ({match}) =>{
@@ -91,30 +116,65 @@ class Main extends Component {
             if(match.params.category2) category += "/" + match.params.category2
             if(match.params.category3) category += "/" + match.params.category3
             this.handleCoctailsCategory(category);
-            return(<div className ="main-body"><CoctailList title = {category} coctails = {this.props.coctails.coctails} isLoading = {this.props.coctails.isLoading} errMess = {this.props.coctails.errMess}/></div>)
+            return(<div className ="main-body">
+                <Breadcrumb>
+                    <BreadcrumbItem><a href = "/">Home</a></BreadcrumbItem>
+                    <BreadcrumbItem><a href = "/category/">Coctails</a></BreadcrumbItem>
+                    <BreadcrumbItem active>{category}</BreadcrumbItem>
+                 </Breadcrumb>
+                <CoctailList title = {category} coctails = {this.props.coctails.coctails} isLoading = {this.props.coctails.isLoading} errMess = {this.props.coctails.errMess}/>
+                </div>)
         }
 
-        const CoctailsWithGlass = ({match}) =>{
+        const CoctailsWithGlass = ({match}) => {
             var glass = match.params.glass;
             if(match.params.glass2) glass += "/" + match.params.glass2
             this.handleCoctailsGlass(glass);
             return(<div className ="main-body"><CoctailList title = {glass} coctails = {this.props.coctails.coctails} isLoading = {this.props.coctails.isLoading} errMess = {this.props.coctails.errMess}/></div>)
         }
 
+        const CoctailsWithLetter = ({match}) => {
+            var letter = match.params.firstLetter;
+            this.handleCoctailsLetter(letter);
+            return(<div className = "main-body">
+                 <Breadcrumb>
+                    <BreadcrumbItem><a href = "/">Home</a></BreadcrumbItem>
+                    <BreadcrumbItem><a href = "/coctails/">Coctails</a></BreadcrumbItem>
+                    <BreadcrumbItem active>{letter}</BreadcrumbItem>
+                 </Breadcrumb>
+                <AlphabetList />
+                <CoctailList title = {letter} coctails = {this.props.coctails.coctails} isLoading = {this.props.coctails.isLoading} errMess = {this.props.coctails.errMess}/>
+                </div>)
+        }
+
         const Ingredients = () =>{
-                return(<IngredeintsList ingredients={this.props.ingredients.ingredients} isLoading = {this.props.ingredients.isLoading} errMess={this.props.ingredients.errMess}/>)
+                return(<div className = "main-body">
+                    <Breadcrumb>
+                        <BreadcrumbItem><a href = "/">Home</a></BreadcrumbItem>
+                        <BreadcrumbItem active>Ingredients</BreadcrumbItem>
+                    </Breadcrumb>
+                    <IngredeintsList ingredients={this.props.ingredients.ingredients} isLoading = {this.props.ingredients.isLoading} errMess={this.props.ingredients.errMess}/>
+                    </div>)
         }
 
         const CoctailIngredients = ({match}) => {
             var ingredient = match.params.ingredient;
             this.handleCoctailsIngredients(ingredient);
-            return(<div className ="main-body"><CoctailList title = {ingredient} coctails = {this.props.coctails.coctails} isLoading = {this.props.coctails.isLoading} errMess = {this.props.coctails.errMess}/></div>)
+            return(<div className ="main-body">
+                <Breadcrumb>
+                        <BreadcrumbItem><a href = "/">Home</a></BreadcrumbItem>
+                        <BreadcrumbItem><a href = "/ingredients/list">Ingredients</a></BreadcrumbItem>
+                        <BreadcrumbItem active>{ingredient}</BreadcrumbItem>
+                 </Breadcrumb>
+                <CoctailList title = {ingredient} coctails = {this.props.coctails.coctails} isLoading = {this.props.coctails.isLoading} errMess = {this.props.coctails.errMess}/>
+                </div>)
         }
-        console.log(this.props.ingredients);
+
         return(
             <div className="App">
-                <Header categories = {this.props.categories.categories} glasses={this.props.glasses.glasses} ingredients= {this.props.ingredients.ingredients}/>
-                <Switch>
+                <Header categories = {this.props.categories.categories} glasses = {this.props.glasses.glasses} ingredients = {this.props.ingredients.ingredients}/>
+                <Switch>        
+                    <Route path = '/coctails/:firstLetter' component = { CoctailsWithLetter }/>
                     <Route path = '/coctail/:coctailId' component = { CoctailWithId } />
                     <Route path = '/category/:category/:category2/:category3' component = { CoctailsWithCategory } />
                     <Route path = '/category/:category/:category2' component = { CoctailsWithCategory } />
@@ -123,6 +183,7 @@ class Main extends Component {
                     <Route path = '/glass/:glass' component = { CoctailsWithGlass } />
                     <Route path = '/ingredients/list' component = { Ingredients }/>
                     <Route path = '/ingredients/:ingredient' component = { CoctailIngredients}/>
+                    <Route path = '' component = { HomePage } />
                 </Switch>
                 <Footer categories = {this.props.categories.categories} />
             </div>

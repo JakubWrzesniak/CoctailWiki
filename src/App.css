@@ -11,7 +11,7 @@
     font-size: 2em; }
 
 .navbar-dark {
-  background-color: #000;
+  background-color: black;
   font-weight: bold; }
   .navbar-dark .nav-link {
     display: inline-block; }
@@ -19,9 +19,6 @@
     color: #fff200 !important; }
     .navbar-dark .nav-link:hover .svg-inline--fa {
       color: #fff200 !important; }
-
-.navbar {
-  margin-bottom: 40px; }
 
 .navbar-nav {
   margin-left: auto !important;
@@ -31,7 +28,7 @@
     padding-left: 1rem;
     margin: auto; }
     .navbar-nav .nav-item .dropdown-menu {
-      background-color: #000; }
+      background-color: black; }
     .navbar-nav .nav-item .dropdown {
       padding-right: 0rem;
       padding-left: 0rem; }
@@ -40,7 +37,7 @@
       .navbar-nav .nav-item .dropdown .dropdown-item:hover {
         color: #fff200;
         text-decoration: none;
-        background-color: #000; }
+        background-color: black; }
 
 .footer {
   margin-top: 40px;
@@ -52,7 +49,7 @@
   padding-left: 20px;
   padding-right: 20px;
   margin-bottom: 0px !important;
-  background-color: #000;
+  background-color: black;
   color: rgba(255, 255, 255, 0.5); }
   .footer a {
     color: rgba(255, 255, 255, 0.5);
@@ -63,23 +60,35 @@
 
 body {
   font-family: Helvetica, sans-serif;
-  background-color: rgba(209, 228, 238, 0.42); }
+  background: linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px, linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px, linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px, linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px, linear-gradient(90deg, #1b1b1b 10px, transparent 10px), linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+  background-color: #131313;
+  background-size: 20px 20px; }
+  body hr {
+    width: 30%;
+    background: #fff200;
+    height: 1px;
+    margin-top: 2rem; }
+  body h1 {
+    font-family: 'Bebas Neue', cursive;
+    color: #f8f1f1;
+    text-align: center;
+    font-size: 4rem; }
+  body h2 {
+    font-family: 'Bebas Neue', cursive;
+    color: #f8f1f1;
+    text-align: center;
+    font-size: 3.5rem; }
+  body h3 {
+    font-family: 'Bebas Neue', cursive;
+    color: #f8f1f1;
+    text-align: center;
+    font-size: 3rem; }
 
 .title {
   padding-top: 20px;
   padding-bottom: 20px;
   margin-top: 50px;
   margin-bottom: 50px; }
-  .title hr {
-    width: 30%;
-    background: white;
-    height: 1px;
-    margin-top: 2rem; }
-  .title h1 {
-    font-family: 'Bebas Neue', cursive;
-    color: #000;
-    text-align: center;
-    font-size: 4rem !important; }
 
 .drink-list .card, .ingredient-list .card {
   background-color: rgba(209, 228, 238, 0.42);
@@ -90,10 +99,10 @@ body {
   border: 1px solid #fff200;
   background-color: rgba(255, 255, 255, 0.281); }
 .drink-list a, .ingredient-list a {
-  color: #000;
+  color: #f8f1f1;
   text-decoration: none; }
 .drink-list a:hover, .ingredient-list a:hover {
-  color: #000;
+  color: #f8f1f1;
   text-decoration: none; }
 .drink-list .card-title, .ingredient-list .card-title {
   text-align: center;
@@ -125,17 +134,17 @@ body {
     padding-left: 1px;
     padding-right: 1px;
     border-style: inherit;
-    background-color: #474747d5; }
+    background-color: #b8b8b8; }
 
 .drink-rightInfo a {
-  color: #474747d5;
+  color: #b8b8b8;
   text-decoration: none; }
 .drink-rightInfo a:hover {
-  color: #00054b;
+  color: #2d2f4d;
   text-decoration: none; }
 .drink-rightInfo .card {
-  background-color: rgba(255, 255, 255, 0.082);
-  color: #000;
+  background-color: rgba(255, 255, 255, 0.26);
+  color: #f8f1f1;
   list-style-image: url(./glass-martini-alt-solid.svg); }
 .drink-rightInfo .coctail-list {
   margin-top: 20px;
@@ -148,13 +157,55 @@ body {
     font-size: 2.2em;
     text-align: center; }
     .drink-rightInfo .coctail-list .coctail-list-item a:link {
-      color: #000;
+      color: #f8f1f1;
       text-decoration: none; }
     .drink-rightInfo .coctail-list .coctail-list-item a:visited {
-      color: #000;
+      color: #f8f1f1;
       text-decoration: none; }
     .drink-rightInfo .coctail-list .coctail-list-item a:hover {
       color: #a09999;
       text-decoration: none; }
+
+.alphabet {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  font-size: 1.2rem; }
+  .alphabet a:link {
+    color: #f8f1f1;
+    text-decoration: none; }
+  .alphabet a:visited {
+    color: #f8f1f1;
+    text-decoration: none; }
+  .alphabet a:hover {
+    color: #a09999;
+    text-decoration: none; }
+
+#random-drink {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: rgba(65, 65, 65, 0.205); }
+  #random-drink .home-subTitle {
+    background-color: #2d2f4d;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px; }
 
 /*# sourceMappingURL=App.css.map */

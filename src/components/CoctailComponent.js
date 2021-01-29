@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import { Link } from 'react-router-dom';
 import {Card,CardBody,CardTitle, CardImg, CardHeader, CardText, NavItem} from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlassMartiniAlt } from '@fortawesome/free-solid-svg-icons';
 import Title from './TitleComponent';
@@ -44,7 +45,6 @@ function Tags(props){
 
 
 function RenderCoctail({coctail}){
-    console.log();
     return(
       <React.Fragment>
             <div className ="col-12">
@@ -52,23 +52,36 @@ function RenderCoctail({coctail}){
                     <Title title = {coctail.strDrink}/>
                 </div>
             </div>
-            <div className = "col-md-6 drink-leftInfo">
+            <div className = "col-12 col-lg-6 drink-leftInfo">
                 <div>
                     <img width ="100%" className="drink-img" src={coctail.strDrinkThumb } alt={coctail.strDrink}/> 
                 </div>
                 <Tags tags={coctail.strTags}/>
             </div>
-            <div className = "col-md-6 drink-rightInfo">
-                <Card>
-                    <CardBody>
+            <div className = "col-12 col-lg-6 drink-rightInfo">
+            <Card>
+                <div className = "container">
+                    <div className = "row">
+                    
+                <div className = "col-12">
+                <CardBody>
                         <CardTitle>Ingrediance</CardTitle>
                         <CardText><IngredientsList array = {coctail}/></CardText>
                     </CardBody>
-                    <CardBody>
+                </div>
+                <div className = "col-12">
+                <CardBody>
                         <CardTitle>Instruction</CardTitle>
                         <CardText>{coctail.strInstructions}</CardText>
                     </CardBody>
+                </div>
+                    
+                    
+           
+                    </div>
+                </div>
                 </Card> 
+             
             </div>
       </React.Fragment>   
     );
