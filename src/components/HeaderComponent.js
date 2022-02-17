@@ -47,8 +47,8 @@ class DropdownMenuItem extends Component{
     render(){
         return(
             <Dropdown onMouseOver={this.onMouseEnter} onMouseLeave={this.onMouseLeave} isOpen={this.state.dropdownOpen} toggle={this.toggle} >
-                <DropdownToggle nav caret>
-                    <Link className="nav-link" to={this.props.linkTo}><FontAwesomeIcon icon ={this.props.icon}  color="white"/> {this.props.title}</Link>
+                <DropdownToggle className="nav-link" nav caret>
+                    <Link to = {`${this.props.linkTo}`}><FontAwesomeIcon icon ={this.props.icon}  color="white"/> {this.props.title}</Link>
                 </DropdownToggle>
                 <DropdownMenu   modifiers={{
               setMaxHeight: {
@@ -100,7 +100,7 @@ class Header extends Component {
                                     <DropdownMenuItem icon = {faBars} list={this.props.categories.drinks} name={'strCategory'} value={'category'} title = {"Category"}/>
                                 </NavItem>
                                 <NavItem>
-                                   <DropdownMenuItem icon = {faBeer} list={this.props.ingredients.drinks} name={'strIngredient1'} value={'ingredients'} title ={"Ingrediences"} linkTo = {`/ingredients/list`}/>
+                                   <DropdownMenuItem icon = {faBeer} list={this.props.ingredients.drinks} name={'strIngredient1'} value={'ingredients'} title ={"Ingrediences"} linkTo = {`CoctailWiki/ingredients/list`}/>
                                 </NavItem>
                                 <NavItem>
                                     <DropdownMenuItem icon ={faGlassWhiskey} list={this.props.glasses.drinks} name={'strGlass'} value={'glass'} title = {"Glass"}/>
